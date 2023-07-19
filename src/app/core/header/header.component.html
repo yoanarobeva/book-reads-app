@@ -1,8 +1,8 @@
 <mat-toolbar class="nav-toolbar" color="primary">
     <p class="site-brand">BookReads</p>
-    <button mat-button>Home</button>
-    <button mat-button>My Books</button>
-    <button mat-button>Browse Books</button>
+    <button mat-button routerLink="/home">Home</button>
+    <button mat-button routerLink="/my-books">My Books</button>
+    <button mat-button routerLink="/browse-books">Browse Books</button>
     <mat-form-field class="search-field">
       <mat-label>Search books</mat-label>
       <input type="text" matInput>
@@ -10,8 +10,8 @@
     </mat-form-field>
     <span class="example-spacer"></span>
     <ng-container>
-      <button mat-button>Sign In</button>
-      <button mat-button>Join</button>
+      <button mat-button routerLink="/login">Sign In</button>
+      <button mat-button routerLink="/register">Join</button>
     </ng-container>
 </mat-toolbar>
   
