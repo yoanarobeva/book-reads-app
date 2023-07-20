@@ -1,8 +1,11 @@
 /* search section */
 
 .book-search {
-    width: 60%;
     padding-inline: 2em;
+}
+
+.book-search.home {
+    width: 60%;
 }
 
 .book-search h3 {
@@ -10,19 +13,24 @@
 }
 
 .book-search mat-list {
-    height: 10em;
+    height: 18em;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+}
+
+.book-search.home mat-list {
+    height: 10em;
     overflow: hidden;
 }
 
 .book-search mat-list li {
-    padding-bottom: 0.2em;
+    padding-bottom: 0.1em;
     padding-right: 2em;
 }
 
 .book-search mat-list a {
     text-decoration: none;
     color: #2b837d;
+    font-size: 0.9em;
 }

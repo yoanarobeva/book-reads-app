@@ -1,37 +1,15 @@
-<section class="book-search">
+<section [ngClass]="isItHomeView ? 'book-search home': 'book-search'">
     <h3>Search and browse books</h3>
     <!-- search input component -->
     <mat-list>
         <!-- TODO: Populate genres -->
-        <li><a routerLink="/books/art">Art</a></li>
-        <li><a routerLink="/books/art">Biography</a></li>
-        <li><a routerLink="/books/art">Business</a></li>
-        <li><a routerLink="/books/art">Children's</a></li>
-        <li><a routerLink="/books/art">Christian</a></li>
-        <li><a routerLink="/books/art">Classic</a></li>
-        <li><a routerLink="/books/art">Comics</a></li>
-        <li><a routerLink="/books/art">Cookbooks</a></li>
-        <li><a routerLink="/books/art">Ebooks</a></li>
-        <li><a routerLink="/books/art">Fantasy</a></li>
-        <li><a routerLink="/books/art">Fiction</a></li>
-        <li><a routerLink="/books/art">Graphic Novels</a></li>
-        <li><a routerLink="/books/art">Historical Fiction</a></li>
-        <li><a routerLink="/books/art">History</a></li>
-        <li><a routerLink="/books/art">Horror</a></li>
-        <li><a routerLink="/books/art">Memoir</a></li>
-        <li><a routerLink="/books/art">Music</a></li>
-        <li><a routerLink="/books/art">Mystery</a></li>
-        <li><a routerLink="/books/art">Nonfiction</a></li>
-        <li><a routerLink="/books/art">Poetry</a></li>
-        <li><a routerLink="/books/art">Psychology</a></li>
-        <li><a routerLink="/books/art">Romance</a></li>
-        <li><a routerLink="/books/art">Science</a></li>
-        <li><a routerLink="/books/art">Science Ficiton</a></li>
-        <li><a routerLink="/books/art">Self Help</a></li>
-        <li><a routerLink="/books/art">Sports</a></li>
-        <li><a routerLink="/books/art">Thriller</a></li>
-        <li><a routerLink="/books/art">Travel</a></li>
-        <li><a routerLink="/books/art">Young Adult</a></li>
-        <li><a routerLink="/books/art">More genres...</a></li>
+        <ng-container *ngIf="isItHomeView">
+            <li *ngFor="let list of lists?.results.slice(0, 20)"><a routerLink="/books/{{list.list_name}}">{{list.display_name}}</a></li>
+            <li><a routerLink="/all-books">More lists...</a></li>  
+        </ng-container>
+
+        <ng-container *ngIf="!isItHomeView">
+            <li *ngFor="let list of lists?.results"><a routerLink="/books/{{list.list_name}}">{{list.display_name}}</a></li>
+        </ng-container>
     </mat-list>
 </section>

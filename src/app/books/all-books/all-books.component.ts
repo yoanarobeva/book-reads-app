@@ -15,7 +15,7 @@ export class AllBooksComponent implements OnInit{
     this.booksService.getAllBooks().subscribe({
       next: (books) => {
         this.books = books;
-        console.log(this.books);
+        // console.log(this.books);
       },
       error: (err) => {
         console.log(err);
