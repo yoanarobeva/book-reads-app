@@ -11,3 +11,16 @@ mat-card-image {
     height: 100px;
     width: auto;
 }
+
+.list-cards-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2em;
+    padding-inline: 2em;
+}
+
+h3 {
+    padding-inline: 2em;
+    font-weight: 500;
+}

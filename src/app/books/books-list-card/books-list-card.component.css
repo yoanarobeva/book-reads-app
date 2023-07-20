@@ -1,0 +1,28 @@
+.list-card {
+    float: left;
+    text-align: left;
+    width: 287px;
+}
+
+.listImgs {
+    height: 80px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.listImgs img {
+    width: 55px;
+    height: 80px;
+    margin-right: 2px;
+    box-sizing: content-box;
+    overflow: clip;
+}
+
+.listFullDetails {
+    color: #999;
+}
+
+a {
+    color: #2b837d;
+    text-decoration: none;
+}

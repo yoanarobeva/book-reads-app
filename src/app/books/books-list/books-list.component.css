@@ -1,0 +1,13 @@
+.table-container {
+    padding-inline: 2em;
+    width: 80%;
+    padding-bottom: 4em;
+}
+
+table {
+    width: 100%;
+}
+
+.grey {
+    color: #999;
+}
