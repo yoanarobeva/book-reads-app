@@ -1,0 +1,28 @@
+/* search section */
+
+.book-search {
+    width: 60%;
+    padding-inline: 2em;
+}
+
+.book-search h3 {
+    font-weight: 500;
+}
+
+.book-search mat-list {
+    height: 10em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.book-search mat-list li {
+    padding-bottom: 0.2em;
+    padding-right: 2em;
+}
+
+.book-search mat-list a {
+    text-decoration: none;
+    color: #2b837d;
+}

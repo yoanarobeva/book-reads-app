@@ -5,7 +5,7 @@ import { MaterialModule } from '../material/material.module';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
   imports: [
     CommonModule,
     MaterialModule,
+    SharedModule,
     RouterModule,
   ],
   exports:[
