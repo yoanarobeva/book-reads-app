@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { BooksListCardComponent } from './books-list-card/books-list-card.component';
 import { BooksListComponent } from './books-list/books-list.component';
+import { MyBooksComponent } from './my-books/my-books.component';
 
 
 
@@ -14,7 +15,8 @@ import { BooksListComponent } from './books-list/books-list.component';
   declarations: [
     AllBooksComponent,
     BooksListCardComponent,
-    BooksListComponent
+    BooksListComponent,
+    MyBooksComponent
   ],
   imports: [
     CommonModule, BooksRoutingModule, MaterialModule, SharedModule, HttpClientModule,
