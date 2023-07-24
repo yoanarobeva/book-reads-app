@@ -2,18 +2,12 @@
 
 <h3>Lists</h3>
 
-<app-books-list />
 
-<!-- <div class="list-cards-container">
-  <app-books-list-card />
-  <app-books-list-card />
-  <app-books-list-card />
-  <app-books-list-card />
-  <app-books-list-card />
-  <app-books-list-card />
-  <app-books-list-card />
-  <app-books-list-card />
-</div> -->
+<div class="list-cards-container">
+  <app-books-list-card *ngFor="let bookList of books" [bookList]="bookList"/>
+</div>
+
+<!-- <app-books-list /> -->
 
 <!-- <mat-card class="example-card" *ngFor="let book of books?.results.lists[0].books">
     <mat-card-header>

@@ -14,10 +14,11 @@ mat-card-image {
 
 .list-cards-container {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
     gap: 2em;
     padding-inline: 2em;
+    padding-bottom: 5em;
 }
 
 h3 {

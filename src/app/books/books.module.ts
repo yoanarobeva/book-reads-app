@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { BooksListCardComponent } from './books-list-card/books-list-card.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { MyBooksComponent } from './my-books/my-books.component';
+import { NewBookComponent } from './new-book/new-book.component';
 
 
 
@@ -16,7 +17,8 @@ import { MyBooksComponent } from './my-books/my-books.component';
     AllBooksComponent,
     BooksListCardComponent,
     BooksListComponent,
-    MyBooksComponent
+    MyBooksComponent,
+    NewBookComponent
   ],
   imports: [
     CommonModule, BooksRoutingModule, MaterialModule, SharedModule, HttpClientModule,

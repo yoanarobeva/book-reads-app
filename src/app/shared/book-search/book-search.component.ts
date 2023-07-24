@@ -17,7 +17,6 @@ export class BookSearchComponent implements OnInit{
     this.listsService.getAllLists().subscribe({
       next: (lists) => {
         this.lists = lists;
-        console.log(this.lists);
       },
       error(err) {
         console.error(err);

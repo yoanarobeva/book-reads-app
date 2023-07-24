@@ -13,14 +13,13 @@
 }
 
 .book-search mat-list {
-    height: 18em;
+    height: 10em;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
 .book-search.home mat-list {
-    height: 10em;
     overflow: hidden;
 }
 

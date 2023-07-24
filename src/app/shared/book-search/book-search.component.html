@@ -1,15 +1,6 @@
 <section [ngClass]="isItHomeView ? 'book-search home': 'book-search'">
     <h3>Search and browse books</h3>
-    <!-- search input component -->
     <mat-list>
-        <!-- TODO: Populate genres -->
-        <ng-container *ngIf="isItHomeView">
-            <li *ngFor="let list of lists?.results.slice(0, 20)"><a routerLink="/books/{{list.list_name}}">{{list.display_name}}</a></li>
-            <li><a routerLink="/all-books">More lists...</a></li>  
-        </ng-container>
-
-        <ng-container *ngIf="!isItHomeView">
-            <li *ngFor="let list of lists?.results"><a routerLink="/books/{{list.list_name}}">{{list.display_name}}</a></li>
-        </ng-container>
+        <li *ngFor="let list of lists"><a routerLink="/books/{{list.list_name}}">{{list.display_name}}</a></li>
     </mat-list>
 </section>

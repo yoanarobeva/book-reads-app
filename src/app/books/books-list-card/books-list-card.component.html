@@ -1,39 +1,15 @@
 <div class="list-card">
     <div class="listImgs">
-        <a href="/list/show/155086.Popular_Kindle_Notes_Highlights_on_Goodreads">
+        <a *ngFor="let book of bookList.books.slice(0,5)" routerLink="/books/{{book._id}}">
             <img
-                alt="Station Eleven by Emily St. John Mandel"
-                title="Station Eleven by Emily St. John Mandel"
-                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1680459872l/20170404._SX98_.jpg" />
-        </a>
-        <a href="/list/show/155086.Popular_Kindle_Notes_Highlights_on_Goodreads">
-            <img
-                alt="Station Eleven by Emily St. John Mandel"
-                title="Station Eleven by Emily St. John Mandel"
-                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1680459872l/20170404._SX98_.jpg" />
-        </a>
-        <a href="/list/show/155086.Popular_Kindle_Notes_Highlights_on_Goodreads">
-            <img
-                alt="Station Eleven by Emily St. John Mandel"
-                title="Station Eleven by Emily St. John Mandel"
-                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1680459872l/20170404._SX98_.jpg" />
-        </a>
-        <a href="/list/show/155086.Popular_Kindle_Notes_Highlights_on_Goodreads">
-            <img
-                alt="Station Eleven by Emily St. John Mandel"
-                title="Station Eleven by Emily St. John Mandel"
-                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1680459872l/20170404._SX98_.jpg" />
-        </a>
-        <a href="/list/show/155086.Popular_Kindle_Notes_Highlights_on_Goodreads">
-            <img
-                alt="Station Eleven by Emily St. John Mandel"
-                title="Station Eleven by Emily St. John Mandel"
-                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1680459872l/20170404._SX98_.jpg" />
+                alt="{{book.title | titlecase}}"
+                title="{{book.title | titlecase}}"
+                src="{{book.book_image}}" />
         </a>
     </div>
-    <a class="listTitle" href="/list/show/155086.Popular_Kindle_Notes_Highlights_on_Goodreads">
-        Popular Kindle Notes &amp; Highlights on Goodreads
+    <a class="listTitle" routerLink="/books/{{bookList.list_name}}">
+        {{bookList.display_name}}
     </a>
     <br />
-    <div class="listFullDetails">92 books — 5 voters</div>
+    <div class="listFullDetails">{{bookList.books.length}} books</div>
 </div>

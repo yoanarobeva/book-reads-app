@@ -3,23 +3,29 @@
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form class="app-form">
+        <form class="app-form" #form="ngForm" (ngSubmit)="loginHandler(form)">
             
             <mat-form-field class="app-full-width">
                 <mat-label>Email</mat-label>
-                <input type="email" matInput placeholder="Email">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <input type="email" matInput placeholder="Email" ngModel #inputEmail="ngModel" required email>
+                <ng-container *ngIf="inputEmail.touched">
+                    <mat-hint *ngIf="inputEmail.errors?.['required']" class="error">Email is required!</mat-hint>
+                    <mat-hint *ngIf="inputEmail.errors?.['email']" class="error">Email is incorrect!</mat-hint>
+                </ng-container>
             </mat-form-field>
 
             <mat-form-field class="app-full-width">
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" type="password">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <input matInput placeholder="Password" type="password" ngModel #inputPassword="ngModel" required minlength="6">
+                <ng-container *ngIf="inputPassword.touched">
+                    <mat-hint *ngIf="inputPassword.errors?.['required']" class="error">Password is required!</mat-hint>
+                    <mat-hint *ngIf="inputPassword.errors?.['minlength']" class="error">Password must be at least 6 characters!</mat-hint>
+                </ng-container>
             </mat-form-field>
 
             <p class="account">Have an account?<a routerLink="/register">Register</a></p>
 
-            <button mat-raised-button color="accent">Login</button>
+            <button [disabled]="form.invalid" mat-raised-button color="accent">Login</button>
 
         </form>
     </mat-card-content>

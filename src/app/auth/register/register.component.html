@@ -3,35 +3,46 @@
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form class="app-form">
+        <form class="app-form" #form="ngForm" (ngSubmit)="registerHandler(form)">
             
             <mat-form-field class="app-full-width">
                 <mat-label>Your Name</mat-label>
-                <input type="text" matInput placeholder="Your Name" name="name">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <input type="text" matInput placeholder="Your Name" name="name" ngModel #inputName="ngModel" required>
+                <ng-container *ngIf="inputName.touched">
+                    <mat-hint *ngIf="inputName.errors?.['required']" class="error">Name is required!</mat-hint>
+                </ng-container>
             </mat-form-field>
 
             <mat-form-field class="app-full-width">
                 <mat-label>Email</mat-label>
-                <input type="email" matInput placeholder="Email" name="email">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <input type="email" matInput placeholder="Email" name="email" ngModel #inputEmail="ngModel" required email>
+                <ng-container *ngIf="inputEmail.touched">
+                    <mat-hint *ngIf="inputEmail.errors?.['required']" class="error">Email is required!</mat-hint>
+                    <mat-hint *ngIf="inputEmail.errors?.['email']" class="error">Email is incorrect!</mat-hint>
+                </ng-container>
             </mat-form-field>
 
             <mat-form-field class="app-full-width">
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" type="password" name="password">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <input matInput placeholder="Password" type="password" name="password" ngModel #inputPassword="ngModel" required minlength="6" >
+                <ng-container *ngIf="inputPassword.touched">
+                    <mat-hint *ngIf="inputPassword.errors?.['required']" class="error">Password is required!</mat-hint>
+                    <mat-hint *ngIf="inputPassword.errors?.['minlength']" class="error">Password must be at least 6 characters!</mat-hint>
+                </ng-container>
             </mat-form-field>
 
             <mat-form-field class="app-full-width">
                 <mat-label>Repeat Password</mat-label>
-                <input matInput placeholder="Repeat Password" type="password" name="rePassword">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <input matInput placeholder="Repeat Password" type="password" name="rePassword" ngModel #inputRePassword="ngModel" required> 
+                <ng-container *ngIf="inputRePassword.touched">
+                    <mat-hint *ngIf="inputPassword.errors?.['required']" class="error">Repeat password is required!</mat-hint>
+                    <mat-hint *ngIf="inputRePassword.errors?.['matchPasswordValidator']" class="error">Repeat Password does not match password!</mat-hint>
+                </ng-container>
             </mat-form-field>
             
             <p class="account">Have an account?<a routerLink="/register">Login</a></p>
 
-            <button mat-raised-button color="accent">Register</button>
+            <button [disabled]="form.invalid" mat-raised-button color="accent">Register</button>
 
         </form>
     </mat-card-content>

@@ -5,7 +5,6 @@ import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 
 
-
 @NgModule({
   declarations: [
     BookSearchComponent
@@ -15,6 +14,6 @@ import { RouterModule } from '@angular/router';
     MaterialModule,
     RouterModule,
   ],
-  exports: [BookSearchComponent]
+  exports: [BookSearchComponent ]
 })
 export class SharedModule { }
