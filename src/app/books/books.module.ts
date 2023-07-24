@@ -9,6 +9,7 @@ import { BooksListCardComponent } from './books-list-card/books-list-card.compon
 import { BooksListComponent } from './books-list/books-list.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { NewBookComponent } from './new-book/new-book.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 
 
@@ -18,7 +19,8 @@ import { NewBookComponent } from './new-book/new-book.component';
     BooksListCardComponent,
     BooksListComponent,
     MyBooksComponent,
-    NewBookComponent
+    NewBookComponent,
+    BookDetailsComponent
   ],
   imports: [
     CommonModule, BooksRoutingModule, MaterialModule, SharedModule, HttpClientModule,

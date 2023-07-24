@@ -10,6 +10,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -22,7 +23,8 @@ const MaterialComponents = [
   MatListModule,
   MatFormFieldModule,
   MatTableModule,
-  MatSelectModule
+  MatSelectModule,
+  MatButtonToggleModule,
 ]
 
 @NgModule({
