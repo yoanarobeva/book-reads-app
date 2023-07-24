@@ -9,12 +9,15 @@ import { BooksService } from '../books.service';
 export class AllBooksComponent implements OnInit{
   //TODO: make types!!!
   books: any;
+  isLoading: boolean = true;
+
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
     this.booksService.getAllBooks().subscribe({
       next: (books) => {
         this.books = books;
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);

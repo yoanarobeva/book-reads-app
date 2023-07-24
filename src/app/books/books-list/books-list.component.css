@@ -11,3 +11,7 @@ table {
 .grey {
     color: #999;
 }
+
+h3 {
+    font-weight: 500;
+}

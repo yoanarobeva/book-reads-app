@@ -14,8 +14,8 @@ export class ListsService {
     return this.http.get(`${url}/data/lists?select=list_id,list_name,display_name`);
   }
 
-  getAList(listName: string) {
-    return this.http.get(`${url}/data/lists?where=list_name%3D%22${listName}%22`);
+  getAList(listId: string) {
+    return this.http.get(`${url}/data/lists?where=list_id%3D%22${listId}%22`);
     // return this.http.get(`${url}/data/lists?where=list_name%3D%22${listName}%22&select=books`);
   }
 }

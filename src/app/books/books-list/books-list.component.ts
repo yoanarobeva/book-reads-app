@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ListsService } from 'src/app/shared/lists.service';
 
 // interface PeriodicElement {
@@ -30,23 +31,35 @@ import { ListsService } from 'src/app/shared/lists.service';
   styleUrls: ['./books-list.component.css']
 })
 
-export class BooksListComponent implements OnInit {
+export class BooksListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['rank', 'book_image', 'title', 'author', 'action'];
   list: any;
+  listId: any;
+  private sub: any;
+  isLoading: boolean = true;
 
-  constructor(private listsService: ListsService, private activatedRoutes: ActivatedRoute) {}
-
-  ngOnInit(): void {
-    const listName = this.activatedRoutes.snapshot.paramMap.get('listName');
-    this.listsService.getAList(listName!).subscribe({
-      next: (list) => {
-        this.list = list;
-        this.list = this.list[0].books;
-      },
-      error: err => {
-        console.error(err);
-      }     
-    })
+  constructor(private listsService: ListsService, private activatedRoutes: ActivatedRoute, private router: Router) {
   }
+
   
+  ngOnInit(): void {
+    this.sub = this.activatedRoutes.params.subscribe((params: Params) => {
+      this.listId = +params['listId'];
+      this.isLoading = true;
+      this.listsService.getAList(this.listId!).subscribe({
+        next: (list) => {
+          this.list = list;
+          this.list = this.list[0];
+          this.isLoading = false;
+        },
+        error: err => {
+          console.error(err);
+        }     
+      })
+    });
+  }  
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 }

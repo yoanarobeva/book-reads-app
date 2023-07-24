@@ -20,12 +20,12 @@ const routes: Routes = [
     component: NewBookComponent,
   },
   {
-    path: ':listName',
-    pathMatch: 'full',
+    path: ':listId',
+    // pathMatch: 'full',
     component: BooksListComponent,
   },
   {
-    path: ':listName/:bookId',
+    path: ':listId/:bookId',
     component: NewBookComponent,
   },
 ];
