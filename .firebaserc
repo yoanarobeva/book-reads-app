@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "book-reads-app": {
+      "hosting": {
+        "book-reads-app": [
+          "book-reads-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "book-reads-app"
+  }
+}

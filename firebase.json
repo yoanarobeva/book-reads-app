@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "book-reads-app",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
