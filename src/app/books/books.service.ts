@@ -13,4 +13,8 @@ export class BooksService {
   getAllBooks () {
     return this.http.get(`${url}/data/lists`)
   }
+
+  getABook (listName: string, bookId: string) {
+    return this.http.get(`${url}/data/lists?where=list_name=${listName}`)
+  }
 }

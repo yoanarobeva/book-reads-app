@@ -1,37 +1,39 @@
+<app-book-search />
+
 <div class="table-container">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="list" class="mat-elevation-z8">
       
         <!-- Position Column -->
-        <ng-container matColumnDef="position">
+        <ng-container matColumnDef="rank">
           <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          <td mat-cell *matCellDef="let book"> {{book.rank}} </td>
         </ng-container>
 
         <!-- Image Column -->
-        <ng-container matColumnDef="img">
-            <th mat-header-cell *matHeaderCellDef> Image </th>
-            <td mat-cell *matCellDef="let element">
-                <img width="50px" src={{element.img}} alt="">
+        <ng-container matColumnDef="book_image">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let book">
+                <img width="50px" src={{book.book_image}} alt="">
             </td>
         </ng-container>
       
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef> Title </th>
+          <td mat-cell *matCellDef="let book">{{book.title}}</td>
         </ng-container>
       
         <!-- Author Column -->
         <ng-container matColumnDef="author">
           <th mat-header-cell *matHeaderCellDef> Author </th>
-          <td mat-cell *matCellDef="let element"> {{element.author}} </td>
+          <td mat-cell *matCellDef="let book"> {{book.author}} </td>
         </ng-container>
       
         <!-- Action Column -->
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef> Action </th>
           <!-- TODO: figure out how to make this button work with selections -->
-          <td mat-cell *matCellDef="let element"><button mat-raised-button>Want to read</button></td>
+          <td mat-cell *matCellDef="let book"><button mat-raised-button>Want to read</button></td>
         </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

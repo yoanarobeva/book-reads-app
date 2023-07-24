@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllBooksComponent } from './all-books/all-books.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { NewBookComponent } from './new-book/new-book.component';
+import { BooksListComponent } from './books-list/books-list.component';
 
 const routes: Routes = [
   {
-    path: 'all',
+    path: '',
+    pathMatch: 'full',
     component: AllBooksComponent,
   },
   {
@@ -16,7 +18,16 @@ const routes: Routes = [
   {
     path: 'new',
     component: NewBookComponent,
-  }
+  },
+  {
+    path: ':listName',
+    pathMatch: 'full',
+    component: BooksListComponent,
+  },
+  {
+    path: ':listName/:bookId',
+    component: NewBookComponent,
+  },
 ];
 
 @NgModule({
