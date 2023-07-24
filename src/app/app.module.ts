@@ -6,10 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
-import { AuthModule } from './auth/auth.module';
-import { BooksModule } from './books/books.module'
 import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,9 +20,8 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     BrowserAnimationsModule,
     MaterialModule,
     CoreModule,
-    AuthModule,
-    BooksModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent]

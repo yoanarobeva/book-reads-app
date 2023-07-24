@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ListsService } from 'src/app/lists.service';
+import { ListsService } from 'src/app/shared/lists.service';
 
 @Component({
   selector: 'app-book-search',

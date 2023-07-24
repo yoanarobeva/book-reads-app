@@ -10,11 +10,11 @@ const routes: Routes = [
     component: AllBooksComponent,
   },
   {
-    path: 'my-books',
+    path: 'my',
     component: MyBooksComponent,
   },
   {
-    path: 'new-book',
+    path: 'new',
     component: NewBookComponent,
   }
 ];

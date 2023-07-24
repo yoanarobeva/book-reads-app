@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -7,34 +7,17 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private fireAuth: AngularFireAuth, private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   login(email: string, password: string) {
-    this.fireAuth.signInWithEmailAndPassword(email, password).then( () => {
-      localStorage.setItem('token', 'true');
-      this.router.navigate(['/']);
-    }, err => {
-      alert(err.message);
-      this.router.navigate(['/login']);
-    } )
+    
   }
 
   register(email: string, password: string) {
-    this.fireAuth.createUserWithEmailAndPassword(email, password).then( () => {
-      alert('Registration Successful!')
-      this.router.navigate(['/login']);
-    }, err => {
-      alert(err.message);
-      this.router.navigate(['/register']);
-    })
+    
   }
 
   logout() {
-    this.fireAuth.signOut().then(() => {
-      localStorage.removeItem('token')
-      this.router.navigate(['/'])
-    }, err => {
-      alert(err.message);
-    })
+    
   }
 }
