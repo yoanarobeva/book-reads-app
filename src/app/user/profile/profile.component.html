@@ -5,14 +5,21 @@
     <div class="content">
         <div class="left-side">
             <div class="user-info">
-                <img mat-card-avatar src="../../../assets/profile.jpg" alt="profile image" />
+                <img mat-card-md-image src="../../../assets/profile.jpg" alt="profile image" />
+
                 <div class="text">
-                    <h3>User Name</h3><span class="edit-profile">edit profile</span>
+                    <h3>User Name <a href="" class="edit-profile">(edit profile)</a></h3>
                     <mat-divider />
         
                     <div class="details">
-                        <p><span>Details</span>Sofia, 31</p>
-                        <p><span>Activity</span>Joined in September 2014, last active this month</p>
+                        <div class="header">
+                            <p>Details</p>
+                            <p>Activity</p>
+                        </div>
+                        <div class="details-content">
+                            <p>Sofia, 31</p>
+                            <p>Joined in September 2014, last active this month</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -21,9 +28,11 @@
                 <h4>USER'S BOOKSHELVES</h4>
                 <mat-divider />
                 <ul>
-                    <li><a href="">Want to read</a></li>
-                    <li><a href="">Currently reading</a></li>
-                    <li><a href="">Read</a></li>
+                    <li><a href="">Want to read (5)</a></li>
+                    <li>•</li>
+                    <li><a href="">Currently reading (1)</a></li>
+                    <li>•</li>
+                    <li><a href="">Read (30)</a></li>
                 </ul>
             </div>
         
@@ -33,10 +42,10 @@
                 <div class="card">
                     <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" width="60px" alt="">
                     <div class="card-text">
-                        <p><span class="card-text-name">User Name</span>is currently reading</p>
-                        <mat-card-title>Book Name</mat-card-title>
-                        <mat-card-subtitle>by Author Name</mat-card-subtitle>
-                        <p>Dec 02, 2014 10:50AM</p>
+                        <p class="card-text-user"><span class="card-text-user-name">User Name </span>is currently reading</p>
+                        <h4>Book Name</h4>
+                        <p class="card-text-author">by Author Name</p>
+                        <p class="card-text-date">Dec 02, 2014 10:50AM</p>
                     </div>
                     <div class="card-actions">
                         <button mat-raised-button>Read</button>
@@ -50,10 +59,10 @@
             <mat-divider />
             <div class="friends-card-container">
                 <div class="friends-card">
-                    <img mat-card-avatar src="../../../assets/profile.jpg" alt="friend name" />
+                    <img mat-card-sm-image src="../../../assets/profile.jpg" alt="friend name" />
                     <div class="friends-card-text">
                         <h6>Friend Name</h6>
-                        <h6>506 books | 106 friends</h6>
+                        <p>506 books | 106 friends</p>
                     </div>
                 </div>
                 <div class="friends-card">

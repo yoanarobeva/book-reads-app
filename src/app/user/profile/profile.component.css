@@ -1,5 +1,5 @@
 .container {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     padding-bottom: 5em;
 }
@@ -8,13 +8,147 @@
     display: flex;
 }
 
-h2 {
+ul {
+    padding: 0;
+    margin-block: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #2b837d;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p, h5 {
+    margin: 0;
+    padding-bottom: 0.5em;
+}
+
+h2, h4, h5 {
     font-weight: 500;
 }
 
-.left-side {
-    flex: 0 0 60%;
+h4 {
+    margin-bottom: 0.4em;
 }
+
+/* LEFT SIDE */
+
+.left-side {
+    flex: 0 0 50%;
+    padding-right: 5em;
+}
+
+/* user-info */
+
+.user-info {
+    display: flex;
+    gap: 1em;
+    padding-block: 2em;
+}
+
+.user-info h3 {
+    margin-top: 0;
+    font-weight: 500;
+}
+
+.user-info h3 a {
+    font-weight: normal;
+    font-size: 0.6em;
+}
+
+.user-info img {
+    border-radius: 50%;
+    box-shadow: 0 0 3px #6a6a6a;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+}
+
+.details .header{
+    font-weight: 500;
+    padding-right: 3em;
+}
+
+/* user-bookshelves */
+
+.bookshelves ul{
+    display: flex;
+    padding-top: 1em;
+    gap: 0.5em;
+}
+
+/* currently-reading */
+
+.currently-reading .card{
+    padding-top: 1em;
+    width: 70%;
+    display: flex;
+    gap: 2em;
+}
+
+.currently-reading img {
+    height: 120px;
+    width: 80px;
+    box-shadow: 0 0 3px #6a6a6a;
+}
+
+.card-text-user {
+    font-size: 0.8em;
+}
+
+.card-text-user-name {
+    font-weight: 500;
+    color: #2b837d;
+    font-size: 0.9em;
+}
+
+.card-text h4 {
+    margin-block: 0.6em;
+}
+
+.card-text-author {
+    color: #6a6a6a;
+    font-size: 0.8em;
+}
+
+.card-text-date {
+   font-size: 0.8em;
+}
+
+.card-actions {
+    width: 8em;
+}
+
+.card-actions button{
+    width: 100%;
+    background-color: #377458;
+    color: #fff;
+    border-radius: 3em;
+    margin-bottom: 0.6em;
+    font-weight: 400;  
+}
+
+.card-actions button:hover {
+    background-color: #F0E0C4;
+    color: #221F1B !important;
+    font-weight: 500;      
+}
+
+.card-actions button:checked {
+    background-color: #F0E0C4;
+    color: #221F1B !important;
+    font-weight: 500;  
+}
+
+/* RIGHT SIDE */
 
 .right-side {
     flex: 0 0 30%;
