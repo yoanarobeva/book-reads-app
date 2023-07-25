@@ -6,6 +6,7 @@ import { ActivityCardComponent } from './activity-card/activity-card.component';
 import { UserRoutingModule } from './user-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { FriendsComponent } from './friends/friends.component';
+import { MyBooksComponent } from './my-books/my-books.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FriendsComponent } from './friends/friends.component';
     ActivityCardComponent,
     ProfileComponent,
     FriendsComponent,
+    MyBooksComponent,
   ],
   imports: [
     CommonModule,

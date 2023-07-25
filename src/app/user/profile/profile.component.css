@@ -1,0 +1,21 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 5em;
+}
+
+.content {
+    display: flex;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+.left-side {
+    flex: 0 0 60%;
+}
+
+.right-side {
+    flex: 0 0 30%;
+}
