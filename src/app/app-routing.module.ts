@@ -9,12 +9,16 @@ const routes: Routes = [
     redirectTo: '/home'
   },
   {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m=> m.AuthModule),
   },
   {
-    path: 'home',
-    component: HomeComponent,
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m=> m.UserModule),
   },
   {
     path: 'books',

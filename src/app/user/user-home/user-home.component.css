@@ -1,0 +1,138 @@
+.main-container {
+    background-color: #FAF6F0;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 5em;
+}
+
+/* LEFT SIDE */
+
+.left-side {
+    max-width: 300px;
+    padding-right: 5em;
+}
+
+a {
+    text-decoration: none;
+    color: #2b837d;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    padding: 0;
+    margin-block: 0;
+    list-style: none;
+}
+
+h4 {
+    font-weight: 500;
+    margin-block: 1em;
+}
+
+mat-divider {
+    margin-block: 1.2em;
+}
+
+.left-side img {
+    box-shadow: 0 0 3px #6a6a6a;
+    cursor: pointer;
+}
+
+/* currently reading */
+
+.currently-reading .content {
+    display: flex;
+    gap: 2em;
+}
+
+.currently-reading img {
+    width: 100px;
+    height: 150px;
+}
+
+.currently-reading .content p {
+    margin-top: 0;
+    color: #6a6a6a;
+    padding: 0;
+    font-size: 0.8em;
+}
+
+.currently-reading .content h3 {
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.currently-reading .content button {
+    height: 2.8em;
+    width: 90%;
+}
+
+.currently-reading ul {
+    display: flex;
+    gap: 0.5em;
+    align-content: flex-start;
+    padding-top: 0.6em;
+}
+
+/* want to read */
+
+.want-to-read .img-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2em;
+}
+
+.want-to-read ul {
+    padding-top: 0.6em;
+}
+
+.want-to-read img {
+    width: 80px;
+    height: 120px;
+}
+
+/* RIGHT SIDE */
+
+.right-side {
+    flex: 0 0 50%;
+}
+
+.right-side h3 {
+    font-weight: 500;
+}
+
+.activity-card {
+    max-width: 100%;
+}
+
+/* banner */
+  
+.banner {
+    background-color: #fff;
+    box-shadow: 0 1px 1px #cecece;
+    margin-top: 1em;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.banner .text {
+    padding: 0 0 1em 1em;
+}
+
+/* activities */
+
+.activities {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
