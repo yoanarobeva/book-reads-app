@@ -10,6 +10,7 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { NewBookComponent } from './new-book/new-book.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { ActivityCardComponent } from './activity-card/activity-card.component';
 
 
 
@@ -20,7 +21,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BooksListComponent,
     MyBooksComponent,
     NewBookComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    ActivityCardComponent
   ],
   imports: [
     CommonModule, BooksRoutingModule, MaterialModule, SharedModule, HttpClientModule,

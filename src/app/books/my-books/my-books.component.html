@@ -1,1 +1,67 @@
-<p>my-books works!</p>
+<div class="main-container">
+    <div class="container">
+        <div class="left-side">
+            <div class="currently-reading">
+                <h4>CURRENTLY READING</h4>
+                <div class="content">
+                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="currently reading book" />
+                    <div class="text">
+                        <h3>Book Title</h3>
+                        <p>Author Name</p>
+                        <button mat-raised-button color="accent">Update Progress</button>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="">View all books</a></li>
+                    <li>•</li>
+                    <li><a href="">Add a book</a></li>
+                </ul>
+            </div>
+    
+            <mat-divider />
+    
+            <div class="want-to-read">
+                <h4>WANT TO READ</h4>
+                <div class="img-container">
+                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
+                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
+                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
+                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
+                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
+                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
+                </div>
+                <ul>
+                    <li><a href="">View all books</a></li>
+                </ul>
+            </div>
+            
+            <mat-divider />
+    
+            <div class="book-shelves">
+                <ul class="shelves">
+                    <li><a href="">5 Want to Read</a></li>
+                    <li><a href="">1 Currently Reading</a></li>
+                    <li><a href="">30 Read</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="right-side">
+            <div class="banner">
+                <img src="../../../assets/1682971764-1682971764_goodreads_misc.png" width="600px" alt="" />
+                <div class="text">
+                    <h4>Discover the Biggest Books of Summer</h4>
+                    <p>Check out your fellow Goodreads members' most anticipated titles for the season.</p>
+                </div>
+            </div>
+    
+            <h3>UPDATES</h3>
+    
+            <div class="activities">
+                <app-activity-card />
+                <app-activity-card />
+                <app-activity-card />
+            </div>
+        </div>
+    </div>
+</div>

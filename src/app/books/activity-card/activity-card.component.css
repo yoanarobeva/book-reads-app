@@ -1,0 +1,60 @@
+a {
+    text-decoration: none;
+    color: #2b837d;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    padding: 0;
+    margin-block: 0;
+    list-style: none;
+}
+
+h4 {
+    font-weight: 500;
+    margin-block: 1em;
+}
+
+/* activity card */
+
+.activity-card {
+    min-width: 300px;
+}
+
+.activity-card mat-card-content {
+    display: flex;
+    gap: 2em;
+}
+
+.activity-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.2em;
+}
+
+.activity-card p {
+    padding-top: 1em;
+}
+
+.activity-card mat-card-content p {
+    margin: 0;
+}
+
+.activity-card .book-cover {
+    display: block;
+    height: 150px;
+    width: 100px;
+    box-shadow: 0 0 3px #6a6a6a;
+}
+
+.activity-card mat-card-actions {
+    padding: 0 1em;
+}
+
+.activity-card ul { 
+    display: flex;
+    gap: 0.5em;
+    font-size: 0.8em;
+}
