@@ -184,3 +184,8 @@ h4 {
     font-size: 0.8em;
     color: #6a6a6a;
 }
+
+.more-friends {
+    align-self: flex-end;
+    font-size: 0.8em;
+}
