@@ -13,7 +13,7 @@ export class ShelvesService {
     return this.http.get(`/api/data/shelves?where=_ownerId%3D%22${userId}%22`);
   }
 
-  getOwnShelf(userId: string, shelfName: string) {
+  getShelf(userId: string, shelfName: string) {
     return this.http.get(`/api/data/shelves?where=shelf%3D%22${shelfName}%22`);
   }
 

@@ -1,0 +1,55 @@
+/* currently reading */
+a {
+    text-decoration: none;
+    color: #2b837d;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    padding: 0;
+    margin-block: 0;
+    list-style: none;
+}
+
+h4 {
+    font-weight: 500;
+    margin-block: 1em;
+}
+
+.currently-reading .content {
+    display: flex;
+    gap: 2em;
+}
+
+.currently-reading img {
+    width: 100px;
+    height: 150px;
+}
+
+.currently-reading .content p {
+    margin-top: 0;
+    color: #6a6a6a;
+    padding: 0;
+    font-size: 0.8em;
+}
+
+.currently-reading .content h3 {
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.currently-reading .content button {
+    height: 2.8em;
+    width: 90%;
+}
+
+.currently-reading ul {
+    display: flex;
+    gap: 0.5em;
+    align-content: flex-start;
+    padding-top: 0.6em;
+}

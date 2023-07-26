@@ -11,6 +11,7 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { ActivityCardComponent } from './activity-card/activity-card.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { WantToReadCardComponent } from './want-to-read-card/want-to-read-card.component';
+import { CurrentReadCardComponent } from './current-read-card/current-read-card.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { WantToReadCardComponent } from './want-to-read-card/want-to-read-card.c
     GeneralHomeComponent,
     ActivityCardComponent,
     NotFoundComponent,
-    WantToReadCardComponent
+    WantToReadCardComponent,
+    CurrentReadCardComponent
   ],
   imports: [
     CommonModule,

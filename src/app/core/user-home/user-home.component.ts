@@ -9,41 +9,28 @@ import { ShelvesService } from 'src/app/books/services/shelves.service';
     styleUrls: ['./user-home.component.css']
 })
 export class UserHomeComponent implements OnInit{
+    userShelves: any;
     wantShelf: any;
-    currentlyShelf: any;
-    currentlyBook: any;
+    currentShelf: any;
+    readShelf: any ;
 
     constructor(private shelvesService: ShelvesService, private authService: AuthService, private booksService: BooksService) {}
-
-    get currentBook () {
-        if(this.currentlyShelf) {
-            this.booksService.getABook(this.currentlyShelf[0].bookId).subscribe({
-                next: book => {
-                    this.currentlyBook = book;
-                },
-                error: err => alert(err.message)
-            });
-        }
-        return this.currentlyBook;
-    }
 
     ngOnInit(): void {
         const userId = this.authService.user._id;
         
-        this.shelvesService.getOwnShelf(userId, 'want').subscribe({
+        this.shelvesService.getOwnShelves(userId).subscribe({
             next: data => {
-                this.wantShelf = data;
+                this.userShelves = data;
+                // console.log('user-shelves', data);
+                this.wantShelf = this.userShelves.filter((x:any) => x.shelf === 'want');
+                // console.log('want-shelf', this.wantShelf);
+                this.currentShelf = this.userShelves.find((x:any) => x.shelf === 'currently');
+                // console.log('current-shelf',this.currentShelf);
+                this.readShelf = this.userShelves.filter((x:any) => x.shelf === 'read');
+                // console.log('read-shelf', this.readShelf);
             },
             error: err => alert(err.message)
         });
-        
-        this.shelvesService.getOwnShelf(userId, 'currently'). subscribe({
-            next: data => {
-                this.currentlyShelf = data;
-                
-            },
-            error: err => alert(err.message)
-        });
-
-  }
+    }
 }

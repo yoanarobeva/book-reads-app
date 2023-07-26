@@ -1,23 +1,7 @@
 <div class="main-container">
     <div class="container">
         <div class="left-side">
-            <div class="currently-reading" *ngIf="currentBook">
-                <h4>CURRENTLY READING</h4>
-                <div class="content">
-                    <img src="{{currentlyBook?.book_image}}" alt="{{currentlyBook?.title}}" />
-                    <div class="text">
-                        <h3>{{currentlyBook?.title}}</h3>
-                        <p>{{currentlyBook?.author}}</p>
-                        <button mat-raised-button routerLink="/books/{{currentlyBook?.listId}}/{{currentlyBook?._id}}" color="accent">Update Progress</button>
-                    </div>
-                </div>
-                <ul>
-                    <li><a href="">View all books</a></li>
-                    <li>•</li>
-                    <li><a href="">Add a book</a></li>
-                </ul>
-            </div>
-    
+            <app-current-read-card *ngIf="currentShelf"  [bookId]="currentShelf.bookId"/>
             <mat-divider />
     
             <div class="want-to-read">
@@ -34,9 +18,9 @@
     
             <div class="book-shelves">
                 <ul class="shelves">
-                    <li><a href="">5 Want to Read</a></li>
+                    <li><a href="">{{wantShelf?.length}} Want to Read</a></li>
                     <li><a href="">1 Currently Reading</a></li>
-                    <li><a href="">30 Read</a></li>
+                    <li><a href="">{{readShelf?.length}} Read</a></li>
                 </ul>
             </div>
         </div>

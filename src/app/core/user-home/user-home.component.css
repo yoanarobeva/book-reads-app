@@ -45,43 +45,6 @@ mat-divider {
     cursor: pointer;
 }
 
-/* currently reading */
-
-.currently-reading .content {
-    display: flex;
-    gap: 2em;
-}
-
-.currently-reading img {
-    width: 100px;
-    height: 150px;
-}
-
-.currently-reading .content p {
-    margin-top: 0;
-    color: #6a6a6a;
-    padding: 0;
-    font-size: 0.8em;
-}
-
-.currently-reading .content h3 {
-    margin: 0;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.currently-reading .content button {
-    height: 2.8em;
-    width: 90%;
-}
-
-.currently-reading ul {
-    display: flex;
-    gap: 0.5em;
-    align-content: flex-start;
-    padding-top: 0.6em;
-}
-
 /* want to read */
 
 .want-to-read .img-container {
@@ -92,11 +55,6 @@ mat-divider {
 
 .want-to-read ul {
     padding-top: 0.6em;
-}
-
-.want-to-read img {
-    width: 80px;
-    height: 120px;
 }
 
 /* RIGHT SIDE */

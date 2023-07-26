@@ -16,7 +16,7 @@ export class WantToReadCardComponent implements OnInit {
   ngOnInit(): void {
     this.booksService.getABook(this.bookId).subscribe({
       next: (book) => {
-        this.book = book;
+        this.book = book;        
       },
       error: err => alert(err.message)
     })

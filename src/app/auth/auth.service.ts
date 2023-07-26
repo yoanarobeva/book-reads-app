@@ -26,7 +26,7 @@ export class AuthService implements OnDestroy {
 
   constructor(private router: Router, private http: HttpClient) { 
     this.subscription = this.user$.subscribe(user => {
-      const persistedData = localStorage.getItem(USER_KEY);
+      const persistedData = sessionStorage.getItem(USER_KEY);
       if (persistedData) {
         this.user = JSON.parse(persistedData);
       } else {

@@ -1,0 +1,16 @@
+<div class="currently-reading">
+    <h4>CURRENTLY READING</h4>
+    <div class="content">
+        <img src="{{book?.book_image}}" alt="{{book?.title}}" />
+        <div class="text">
+            <h3>{{book?.title}}</h3>
+            <p>{{book?.author}}</p>
+            <button mat-raised-button routerLink="/book/{{book?.listId}}/{{book?._id}}" color="accent">Update Progress</button>
+        </div>
+    </div>
+    <ul>
+        <li><a href="">View all book</a></li>
+        <li>•</li>
+        <li><a href="">Add a book</a></li>
+    </ul>
+</div>
