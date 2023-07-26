@@ -1,6 +1,6 @@
 <section [ngClass]="isItHomeView ? 'book-search home': 'book-search'">
     <h3>Search and browse books</h3>
     <mat-list>
-        <li *ngFor="let list of lists"><a routerLink="/books/{{list.list_id}}">{{list.display_name}}</a></li>
+        <li *ngFor="let list of lists"><a routerLink="/books/{{list._id}}">{{list.display_name}}</a></li>
     </mat-list>
 </section>

@@ -1,14 +1,14 @@
 <div class="main-container">
     <div class="container">
         <div class="left-side">
-            <div class="currently-reading">
+            <div class="currently-reading" *ngIf="currentBook">
                 <h4>CURRENTLY READING</h4>
                 <div class="content">
-                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="currently reading book" />
+                    <img src="{{currentlyBook?.book_image}}" alt="{{currentlyBook?.title}}" />
                     <div class="text">
-                        <h3>Book Title</h3>
-                        <p>Author Name</p>
-                        <button mat-raised-button color="accent">Update Progress</button>
+                        <h3>{{currentlyBook?.title}}</h3>
+                        <p>{{currentlyBook?.author}}</p>
+                        <button mat-raised-button routerLink="/books/{{currentlyBook?.listId}}/{{currentlyBook?._id}}" color="accent">Update Progress</button>
                     </div>
                 </div>
                 <ul>
@@ -23,12 +23,7 @@
             <div class="want-to-read">
                 <h4>WANT TO READ</h4>
                 <div class="img-container">
-                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
-                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
-                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
-                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
-                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
-                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="" width="80px"/>
+                    <app-want-to-read-card *ngFor="let shelf of wantShelf?.slice(0, 6)" [bookId]="shelf.bookId" />
                 </div>
                 <ul>
                     <li><a href="">View all books</a></li>

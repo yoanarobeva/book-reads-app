@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ListsService } from 'src/app/shared/lists.service';
+import { BooksService } from 'src/app/books/services/books.service';
 
 @Component({
   selector: 'app-book-search',
@@ -11,10 +11,11 @@ export class BookSearchComponent implements OnInit{
 
   @Input('view') isItHomeView: boolean = false;
   
-  constructor(private listsService: ListsService) {}
+  constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
-    this.listsService.getAllLists().subscribe({
+    
+    this.booksService.getAllLists().subscribe({
       next: (lists) => {
         this.lists = lists;
       },

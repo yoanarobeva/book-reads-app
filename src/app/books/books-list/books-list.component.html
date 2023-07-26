@@ -3,7 +3,7 @@
 <div class="table-container" >
   <app-loading  *ngIf="isLoading"/>
   <h3 *ngIf="!isLoading">{{list.display_name}} books:</h3>
-  <table *ngIf="!isLoading" mat-table [dataSource]="list.books" class="mat-elevation-z8">
+  <table *ngIf="!isLoading" mat-table [dataSource]="books" class="mat-elevation-z8">
       
     <!-- Position Column -->
     <ng-container matColumnDef="rank">

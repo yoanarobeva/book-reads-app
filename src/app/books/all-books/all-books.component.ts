@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from '../books.service';
+import { BooksService } from '../services/books.service';
 
 @Component({
   selector: 'app-all-books',
@@ -8,16 +8,18 @@ import { BooksService } from '../books.service';
 })
 export class AllBooksComponent implements OnInit{
   //TODO: make types!!!
-  books: any;
+  lists: any;
   isLoading: boolean = true;
 
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
-    this.booksService.getAllBooks().subscribe({
-      next: (books) => {
-        this.books = books;
+    this.booksService.getAllLists().subscribe({
+      next: (lists) => {
+        this.lists = lists;
         this.isLoading = false;
+        // console.log('from all-books: listsLog', lists);
+        
       },
       error: (err) => {
         console.log(err);

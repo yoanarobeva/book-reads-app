@@ -6,7 +6,7 @@
 <div class="list-cards-container">
   <app-loading *ngIf="isLoading"/>
   <ng-container *ngIf="!isLoading">
-    <app-books-list-card *ngFor="let bookList of books" [bookList]="bookList"/>
+    <app-books-list-card *ngFor="let list of lists" [list]="list"/>
   </ng-container>
 </div>
 

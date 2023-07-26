@@ -1,15 +1,15 @@
 <div class="list-card">
     <div class="listImgs">
-        <a *ngFor="let book of bookList.books.slice(0,5)" routerLink="/books/{{bookList.list_id}}/{{book._id}}">
+        <a *ngFor="let book of books?.slice(0,5)" routerLink="/books/{{list._id}}/{{book._id}}">
             <img
                 alt="{{book.title | titlecase}}"
                 title="{{book.title | titlecase}}"
                 src="{{book.book_image}}" />
         </a>
     </div>
-    <a class="listTitle" routerLink="/books/{{bookList.list_id}}">
-        {{bookList.display_name}}
+    <a class="listTitle" routerLink="/books/{{list._id}}">
+        {{list.display_name}}
     </a>
     <br />
-    <div class="listFullDetails">{{bookList.books.length}} books</div>
+    <div class="listFullDetails">{{books?.length}} books</div>
 </div>

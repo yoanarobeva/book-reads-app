@@ -10,6 +10,7 @@ import { GeneralHomeComponent } from './general-home/general-home.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { ActivityCardComponent } from './activity-card/activity-card.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { WantToReadCardComponent } from './want-to-read-card/want-to-read-card.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     UserHomeComponent,
     GeneralHomeComponent,
     ActivityCardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    WantToReadCardComponent
   ],
   imports: [
     CommonModule,
