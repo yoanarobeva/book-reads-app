@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { GeneralHomeComponent } from './general-home/general-home.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { ActivityCardComponent } from './activity-card/activity-card.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ActivityCardComponent } from './activity-card/activity-card.component';
     UserHomeComponent,
     GeneralHomeComponent,
     ActivityCardComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
