@@ -26,7 +26,7 @@ export class LoginComponent {
       next: user => {
         this.isLoading = false;
         localStorage.setItem(USER_KEY, JSON.stringify(user));
-        this.router.navigate(['/user/home']);
+        this.router.navigate(['/home']);
       },
       error: err => {
         alert(err.message);

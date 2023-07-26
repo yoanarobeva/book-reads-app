@@ -6,13 +6,19 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { GeneralHomeComponent } from './general-home/general-home.component';
+import { UserHomeComponent } from './user-home/user-home.component';
+import { ActivityCardComponent } from './activity-card/activity-card.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    UserHomeComponent,
+    GeneralHomeComponent,
+    ActivityCardComponent,
   ],
   imports: [
     CommonModule,

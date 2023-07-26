@@ -2,23 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthActivate } from '../shared/guards/auth.activate';
 
 const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
-        // canActivate: [AuthActivate],
+        canActivate: [AuthActivate],
       },
       {
         path: 'register',
         component: RegisterComponent,
-        // canActivate: [AuthActivate],
-      },
-    //   {
-    //     path: 'profile',
-    //     component: ProfileComponent,
-    //     // canActivate: [AuthActivate],
-    //   }
+        canActivate: [AuthActivate],
+      }
 ];
 
 @NgModule({
