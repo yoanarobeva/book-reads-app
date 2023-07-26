@@ -1,7 +1,7 @@
 <mat-toolbar class="nav-toolbar" color="primary">
     <p class="site-brand">BookReads</p>
     <button *ngIf="!isLoggedIn" mat-button routerLink="/home">Home</button>
-    <button *ngIf="isLoggedIn" mat-button routerLink="/user/home">User Home</button>
+    <button *ngIf="isLoggedIn" mat-button routerLink="/user/home">Home</button>
     <button *ngIf="isLoggedIn" mat-button routerLink="/user/my-books">My Books</button>
     <button mat-button routerLink="/books">Browse Books</button>
     <button *ngIf="isLoggedIn" mat-button routerLink="/books/new">Add New Book</button>

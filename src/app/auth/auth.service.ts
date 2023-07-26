@@ -26,14 +26,19 @@ export class AuthService implements OnDestroy {
 
   constructor(private router: Router, private http: HttpClient) { 
     this.subscription = this.user$.subscribe(user => {
-      this.user = user;
+      const persistedData = localStorage.getItem(USER_KEY);
+      if (persistedData) {
+        this.user = JSON.parse(persistedData);
+      } else {
+        this.user = user;
+      }
     })
   }
 
   login(email: string, password: string) {
     return this.http
       .post('/api/users/login', JSON.stringify({email, password}))
-      .pipe(tap(user => this.user$$.next(user)));
+      .pipe(tap(user => this.user$$.next(user)))
   }
 
   register(name:string, email: string, password: string) {
