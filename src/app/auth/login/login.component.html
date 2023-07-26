@@ -1,4 +1,5 @@
-<mat-card class="app-card">
+<app-loading *ngIf="isLoading" />
+<mat-card *ngIf="!isLoading" class="app-card">
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +9,27 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  isLoading: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   loginHandler(form: NgForm) {
     if(form.invalid) {
       return;
     }
 
-    console.log(form.value);
+    this.isLoading = true;
 
     const {email, password} = form.value;
-    this.authService.login(email, password);
+    this.authService.login(email, password).subscribe({
+      next: user => {
+        this.isLoading = false;
+        this.router.navigate(['/home']);
+      },
+      error: err => {
+        alert(err.message);
+      }
+    });
   
   }
 }

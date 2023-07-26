@@ -1,10 +1,10 @@
 <mat-toolbar class="nav-toolbar" color="primary">
     <p class="site-brand">BookReads</p>
-    <button mat-button routerLink="/home">Home</button>
-    <button mat-button routerLink="/user/home">User Home</button>
-    <button mat-button routerLink="/user/my-books">My Books</button>
+    <button *ngIf="!isLoggedIn" mat-button routerLink="/home">Home</button>
+    <button *ngIf="isLoggedIn" mat-button routerLink="/user/home">User Home</button>
+    <button *ngIf="isLoggedIn" mat-button routerLink="/user/my-books">My Books</button>
     <button mat-button routerLink="/books">Browse Books</button>
-    <button mat-button routerLink="/books/new">Add New Book</button>
+    <button *ngIf="isLoggedIn" mat-button routerLink="/books/new">Add New Book</button>
     <mat-form-field class="search-field">
       <mat-label>Search books</mat-label>
       <input type="text" matInput>
@@ -12,9 +12,14 @@
     </mat-form-field>
     <span class="example-spacer"></span>
     <ng-container>
-      <button mat-button routerLink="/auth/login">Sign In</button>
-      <button mat-button routerLink="/auth/register">Join</button>
-      <button mat-button routerLink="/user/profile">Profile</button>
+      <ng-container *ngIf="!isLoggedIn">
+        <button mat-button routerLink="/auth/login">Sign In</button>
+        <button mat-button routerLink="/auth/register">Join</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn">
+        <button mat-button routerLink="/user/profile">Profile</button>
+        <button mat-button (click)="logout()">Sign Out</button>
+      </ng-container>
     </ng-container>
 </mat-toolbar>
   

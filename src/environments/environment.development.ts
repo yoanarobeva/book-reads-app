@@ -1,3 +1,5 @@
+import { API_URI } from "src/app/shared/constants";
+
 export const environment = {
-  apiUrl: 'http://localhost:3000'
+  apiUrl: API_URI
 };
