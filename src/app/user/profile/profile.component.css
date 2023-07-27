@@ -62,9 +62,19 @@ h4 {
     margin-bottom: 1em;
 }
 
-.user-info img {
+.img-container {
+    position: relative; 
+    width: 200px; 
+    height: 200px; 
+    overflow: hidden; 
     border-radius: 50%;
     box-shadow: 0 0 3px #6a6a6a;
+}
+
+.user-info img {
+    display: block;
+    width: 100%; 
+    height: auto;
 }
 
 .details {
@@ -85,69 +95,6 @@ h4 {
     display: flex;
     padding-top: 1em;
     gap: 0.5em;
-}
-
-/* currently-reading */
-
-.currently-reading .card{
-    padding-top: 1em;
-    width: 70%;
-    display: flex;
-    gap: 2em;
-}
-
-.currently-reading img {
-    height: 120px;
-    width: 80px;
-    box-shadow: 0 0 3px #6a6a6a;
-}
-
-.card-text-user {
-    font-size: 0.8em;
-}
-
-.card-text-user-name {
-    font-weight: 500;
-    color: #2b837d;
-    font-size: 0.9em;
-}
-
-.card-text h4 {
-    margin-top: 0.6em;
-}
-
-.card-text-author {
-    color: #6a6a6a;
-    font-size: 0.8em;
-}
-
-.card-text-date {
-   font-size: 0.8em;
-}
-
-.card-actions {
-    width: 8em;
-}
-
-.card-actions button{
-    width: 100%;
-    background-color: #377458;
-    color: #fff;
-    border-radius: 3em;
-    margin-bottom: 0.6em;
-    font-weight: 400;  
-}
-
-.card-actions button:hover {
-    background-color: #F0E0C4;
-    color: #221F1B !important;
-    font-weight: 500;      
-}
-
-.card-actions button:checked {
-    background-color: #F0E0C4;
-    color: #221F1B !important;
-    font-weight: 500;  
 }
 
 /* RIGHT SIDE */

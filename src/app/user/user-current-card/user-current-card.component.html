@@ -1,0 +1,16 @@
+<div class="currently-reading" *ngIf="book">
+    <h4>{{user.name | uppercase}} IS CURRENTLY READING</h4>
+    <mat-divider />
+    <div class="card">
+        <img src="{{book.book_image}}" alt="{{book.title}}">
+        <div class="card-text">
+            <p class="card-text-user"><span class="card-text-user-name">{{user.name}} </span>is currently reading</p>
+            <h4>{{book.title}}</h4>
+            <p class="card-text-author">by {{book.author}}</p>
+            <p class="card-text-date">{{book._createdOn | date}}</p>
+        </div>
+        <div class="card-actions">
+            <button mat-raised-button routerLink="/books/{{book._listId}}/{{book._id}}">Update Status</button>
+        </div>
+    </div>
+</div>

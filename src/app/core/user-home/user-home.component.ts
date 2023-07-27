@@ -14,7 +14,7 @@ export class UserHomeComponent implements OnInit{
     currentShelf: any;
     readShelf: any ;
 
-    constructor(private shelvesService: ShelvesService, private authService: AuthService, private booksService: BooksService) {}
+    constructor(private shelvesService: ShelvesService, private authService: AuthService) {}
 
     ngOnInit(): void {
         const userId = this.authService.user._id;
@@ -22,13 +22,9 @@ export class UserHomeComponent implements OnInit{
         this.shelvesService.getOwnShelves(userId).subscribe({
             next: data => {
                 this.userShelves = data;
-                // console.log('user-shelves', data);
                 this.wantShelf = this.userShelves.filter((x:any) => x.shelf === 'want');
-                // console.log('want-shelf', this.wantShelf);
                 this.currentShelf = this.userShelves.find((x:any) => x.shelf === 'currently');
-                // console.log('current-shelf',this.currentShelf);
                 this.readShelf = this.userShelves.filter((x:any) => x.shelf === 'read');
-                // console.log('read-shelf', this.readShelf);
             },
             error: err => alert(err.message)
         });

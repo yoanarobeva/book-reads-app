@@ -5,10 +5,12 @@
     <div class="content">
         <div class="left-side">
             <div class="user-info">
-                <img mat-card-md-image src="../../../assets/profile.jpg" alt="profile image" />
+                <div class="img-container">
+                    <img mat-card-md-image src="{{user.img}}" alt="profile image" />
+                </div>
 
                 <div class="text">
-                    <h3>User Name <a href="" class="edit-profile">(edit profile)</a></h3>
+                    <h3>{{user.name}} <a href="" class="edit-profile">(edit profile)</a></h3>
                     <mat-divider />
         
                     <div class="details">
@@ -17,45 +19,30 @@
                             <p>Activity</p>
                         </div>
                         <div class="details-content">
-                            <p>Sofia, 31</p>
-                            <p>Joined in September 2014, last active this month</p>
+                            <p>{{user.city}}, {{user.age}}</p>
+                            <p>Joined in {{user._createdOn | date}}</p>
                         </div>
                     </div>
                 </div>
             </div>
         
             <div class="bookshelves">
-                <h4>USER'S BOOKSHELVES</h4>
+                <h4>{{user.name | uppercase}}'S BOOKSHELVES</h4>
                 <mat-divider />
                 <ul>
-                    <li><a href="">Want to read (5)</a></li>
+                    <li><a href="">Want to read ({{wantShelf.length !==0 ? wantShelf.length : 0}})</a></li>
                     <li>•</li>
-                    <li><a href="">Currently reading (1)</a></li>
+                    <li><a href="">Currently reading ({{currentShelf? 1 : 0 }})</a></li>
                     <li>•</li>
-                    <li><a href="">Read (30)</a></li>
+                    <li><a href="">Read ({{readShelf.length !==0 ? readShelf.length : 0}})</a></li>
                 </ul>
             </div>
         
-            <div class="currently-reading">
-                <h4>USER IS CURRENTLY READING</h4>
-                <mat-divider />
-                <div class="card">
-                    <img src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" width="60px" alt="">
-                    <div class="card-text">
-                        <p class="card-text-user"><span class="card-text-user-name">User Name </span>is currently reading</p>
-                        <h4>Book Name</h4>
-                        <p class="card-text-author">by Author Name</p>
-                        <p class="card-text-date">Dec 02, 2014 10:50AM</p>
-                    </div>
-                    <div class="card-actions">
-                        <button mat-raised-button>Read</button>
-                    </div>
-                </div>
-            </div>
+            <app-user-current-card *ngIf="currentShelf" [currentShelf]="currentShelf"/>
         </div>
     
         <div class="right-side">
-            <h4>USER'S FRIENDS (59)</h4>
+            <h4>{{user.name | uppercase}}'S FRIENDS (59)</h4>
             <mat-divider />
             <div class="friends-card-container">
                 <div class="friends-card">
@@ -66,14 +53,14 @@
                     </div>
                 </div>
                 <div class="friends-card">
-                    <img mat-card-avatar src="../../../assets/profile.jpg" alt="friend name" />
+                    <img  src="../../../assets/profile.jpg" alt="friend name" />
                     <div class="friends-card-text">
                         <h5>Friend Name</h5>
                         <p>506 books | 106 friends</p>
                     </div>
                 </div>
                 <div class="friends-card">
-                    <img mat-card-avatar src="../../../assets/profile.jpg" alt="friend name" />
+                    <img mat-card-sm-image src="../../../assets/profile.jpg" alt="friend name" />
                     <div class="friends-card-text">
                         <h5>Friend Name</h5>
                         <p>506 books | 106 friends</p>
