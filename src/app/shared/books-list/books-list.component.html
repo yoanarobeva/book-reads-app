@@ -1,4 +1,4 @@
-<div class="isItAllView ? 'table-container': table-container-max" >
+<div [class]="isItAllView ? 'table-container' : 'table-container-max'" >
     <app-loading  *ngIf="isLoading"/>
     <h3 *ngIf="!isLoading">{{isItAllView ? list.display_name : 'User'}} books:</h3>
     <p *ngIf="books?.length === 0">There are no books!</p>
