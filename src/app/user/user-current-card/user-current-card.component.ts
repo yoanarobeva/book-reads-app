@@ -21,7 +21,6 @@ export class UserCurrentCardComponent implements OnInit{
     this.booksService.getABook(bookId).subscribe({
       next: book => {
         this.book = book;
-        console.log(book);
       },
       error: err => alert(err.message)
     })
