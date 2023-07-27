@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { FriendsComponent } from './friends/friends.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { UserCurrentCardComponent } from './user-current-card/user-current-card.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { UserCurrentCardComponent } from './user-current-card/user-current-card.
     CommonModule,
     MaterialModule,
     UserRoutingModule,
+    SharedModule,
   ]
 })
 export class UserModule { }

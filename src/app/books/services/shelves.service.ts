@@ -10,10 +10,16 @@ export class ShelvesService {
   constructor(private http: HttpClient, private booksService: BooksService) { }
 
   getOwnShelves(userId: string) {
-    return this.http.get(`/api/data/shelves?where=_ownerId%3D%22${userId}%22`);
+    return this.http.get(`/api/data/shelves?where=_ownerId%3D%22${userId}%22&load=bookData%3DbookId%3Abooks`);
   }
 
-  getShelf(userId: string, shelfName: string) {
+  // getOwnShelf(userId: string, shelfName: string) {
+  //   const match = encodeURIComponent(`shelf="${shelfName}",_ownerId="${userId}"`);
+  //   debugger;
+  //   return this.http.get(`/api/data/shelves?where=${match}`);
+  // }
+
+  getShelf(shelfName: string) {
     return this.http.get(`/api/data/shelves?where=shelf%3D%22${shelfName}%22`);
   }
 

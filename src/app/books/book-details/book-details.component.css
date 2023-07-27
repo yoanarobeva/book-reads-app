@@ -28,7 +28,7 @@ a:hover {
 img {
     display: block;
     width: auto;
-    height: 450px;
+    height: 400px;
     margin: 0 auto;
 }
 
@@ -60,6 +60,7 @@ img {
 
 .action.red{
     background-color: rgb(191, 75, 75);
+    margin-top: 2em;
 }
 
 .action:hover {

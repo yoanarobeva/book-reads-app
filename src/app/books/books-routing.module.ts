@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllBooksComponent } from './all-books/all-books.component';
 import { NewBookComponent } from './new-book/new-book.component';
-import { BooksListComponent } from './books-list/books-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { loggedInGuard } from '../shared/guards/auth-guard.guard';
 import { UpdateBookComponent } from './update-book/update-book.component';
+import { AllBooksListComponent } from './all-books-list/all-books-list.component';
 
 const routes: Routes = [
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: ':listId',
     // pathMatch: 'full',
-    component: BooksListComponent,
+    component: AllBooksListComponent,
   },
   {
     path: ':listId/:bookId',

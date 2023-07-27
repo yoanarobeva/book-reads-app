@@ -17,6 +17,10 @@ const routes: Routes = [
         path: 'my-books',
         component: MyBooksComponent,
     },
+    {
+        path: 'my-books/:shelfName',
+        component: MyBooksComponent,
+    },
 ];
 
 @NgModule({

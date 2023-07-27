@@ -9,6 +9,9 @@
             <mat-button-toggle value="currently">Currently reading</mat-button-toggle>
             <mat-button-toggle value="read">Read</mat-button-toggle>
           </mat-button-toggle-group>
+
+          <mat-divider></mat-divider>
+          
           <ng-container *ngIf="isOwner">
             <button (click)="deleteBookHandler(book?._id)" class="action red" mat-raised-button>Delete</button>
             <button routerLink="/books/update/{{book?._id}}" class="action" mat-raised-button>Update</button>

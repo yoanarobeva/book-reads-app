@@ -19,18 +19,27 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   selectedShelfName: string | undefined
   booksOnShelves: any;
 
-  constructor(private booksService: BooksService, private activatedRoutes: ActivatedRoute, private shelvesService: ShelvesService, private authService: AuthService) {}
+  constructor(
+    private booksService: BooksService, 
+    private activatedRoutes: ActivatedRoute, 
+    private shelvesService: ShelvesService, 
+    private authService: AuthService
+  ) {}
 
   get isLoggedIn(): boolean {
     return this.authService.isLogged;
   }
 
   get isOwner(): boolean {
-    if (this.authService.user._id === this.book._ownerId) {
-      return true;
+    if (this.authService.user) {
+      if (this.authService.user._id === this.book?._ownerId) {
+        return true;
+      } else {
+        return false;
+      };
     } else {
       return false;
-    };
+    }
   }
   
   get currentShelf () {

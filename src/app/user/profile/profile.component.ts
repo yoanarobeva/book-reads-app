@@ -23,13 +23,9 @@ export class ProfileComponent implements OnInit {
         this.shelvesService.getOwnShelves(this.user._id).subscribe({
             next: data => {
                 this.userShelves = data;
-                console.log('user-shelves', data);
                 this.wantShelf = this.userShelves.filter((x:any) => x.shelf === 'want');
-                console.log('want-shelf', this.wantShelf);
                 this.currentShelf = this.userShelves.find((x:any) => x.shelf === 'currently');
-                console.log('current-shelf',this.currentShelf);
                 this.readShelf = this.userShelves.filter((x:any) => x.shelf === 'read');
-                console.log('read-shelf', this.readShelf);
             },
             error: err => alert(err.message)
         });
