@@ -9,6 +9,7 @@ import { BooksListCardComponent } from './books-list-card/books-list-card.compon
 import { BooksListComponent } from './books-list/books-list.component';
 import { NewBookComponent } from './new-book/new-book.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BookDetailsComponent,
   ],
   imports: [
-    CommonModule, BooksRoutingModule, MaterialModule, SharedModule, HttpClientModule,
+    CommonModule, BooksRoutingModule, MaterialModule, SharedModule, HttpClientModule, FormsModule,
   ]
 })
 export class BooksModule { }

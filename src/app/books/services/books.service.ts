@@ -28,4 +28,16 @@ export class BooksService {
   getABook (bookId: string) {
     return this.http.get(`/api/data/books/${bookId}`);
   }
+
+  addABook(bookData: any) {
+    return this.http.post('/api/data/books', bookData);
+  }
+
+  updateABook(bookId: string, bookData: any) {
+    return this.http.put(`/api/data/books/${bookId}`, bookData);
+  }
+
+  removeABook(bookId: string) {
+    return this.http.delete(`/api/data/books/${bookId}`);
+  }
 }

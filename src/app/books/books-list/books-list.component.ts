@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { BooksService } from 'src/app/books/services/books.service';
 
 @Component({
@@ -9,14 +10,30 @@ import { BooksService } from 'src/app/books/services/books.service';
 })
 
 export class BooksListComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['rank', 'book_image', 'title', 'author', 'action'];
+  displayedColumns: string[] = ['book_image', 'title', 'author', 'action'];
   books: any;
   listId: any;
   list: any;
   private sub: any;
   isLoading: boolean = true;
 
-  constructor(private booksService: BooksService, private activatedRoutes: ActivatedRoute) {}
+  constructor(private authService: AuthService, private booksService: BooksService, private activatedRoutes: ActivatedRoute) {}
+  
+  get isLoggedIn(): boolean {
+    return this.authService.isLogged;
+  }
+
+  get userId(): string {
+    return this.authService.user._id;   
+  }
+
+  deleteBookHandler(bookId: string) {
+    alert('Do you want to delete a book?');
+    this.booksService.removeABook(bookId).subscribe({
+      next:() => {},
+      error: err => alert(err.message)
+    })
+  }
   
   ngOnInit(): void {
     this.sub = this.activatedRoutes.params.subscribe((params: Params) => {

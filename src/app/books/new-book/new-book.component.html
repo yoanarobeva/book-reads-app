@@ -1,41 +1,54 @@
-<mat-card class="app-card">
+<app-loading *ngIf="isLoading"/>
+
+<mat-card *ngIf="!isLoading" class="app-card">
     <mat-card-header>
       <mat-card-title>Add New Book</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form class="app-form">
+        <form class="app-form" #form="ngForm" (ngSubmit)="addBookHandler(form)">
             
             <mat-form-field class="app-full-width">
-                <mat-label>Name</mat-label>
-                <input type="text" matInput placeholder="Book name..." name="name">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <mat-label>Title</mat-label>
+                <input type="text" matInput placeholder="Book title..." name="title" ngModel #inputTitle="ngModel" required>
+                <ng-container *ngIf="inputTitle.touched">
+                    <mat-hint *ngIf="inputTitle.errors?.['required']" class="error">Title is required!</mat-hint>
+                </ng-container>
             </mat-form-field>
 
             <mat-form-field class="app-full-width">
                 <mat-label>Author</mat-label>
-                <input type="text" matInput placeholder="Author..." name="author">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <input type="text" matInput placeholder="Author..." name="author" ngModel #inputAuthor="ngModel" required>
+                <ng-container *ngIf="inputAuthor.touched">
+                    <mat-hint *ngIf="inputAuthor.errors?.['required']" class="error">Author's name is required!</mat-hint>
+                </ng-container>
             </mat-form-field>
 
             <mat-form-field class="app-full-width">
-                <mat-label>Genre</mat-label>
-                <input type="text" matInput placeholder="Genre..."  name="genre">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <mat-label>List</mat-label>
+                <mat-select name="_listId" ngModel #selectList="ngModel" required>
+                    <mat-option *ngFor="let list of lists" [value]="list._id">
+                      {{list.display_name}}
+                    </mat-option>
+                </mat-select>
+                <ng-container *ngIf="selectList.touched">
+                    <mat-hint *ngIf="selectList.errors?.['required']" class="error">List name is required!</mat-hint>
+                </ng-container>
             </mat-form-field>
 
             <mat-form-field class="app-full-width">
                 <mat-label>Cover image</mat-label>
-                <input type="text" matInput placeholder="http://"  name="coverImg">
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <input type="text" matInput placeholder="http://"  name="book_image" ngModel #inputImage="ngModel" required>
+                <ng-container *ngIf="inputImage.touched">
+                    <mat-hint *ngIf="inputImage.errors?.['required']" class="error">Cover image is required!</mat-hint>
+                </ng-container>
             </mat-form-field>
 
             <mat-form-field class="app-full-width">
                 <mat-label>Description</mat-label>
-                <textarea matInput placeholder="Description..." name="description"></textarea>
-                <!-- <mat-hint class="error">Error</mat-hint> -->
+                <textarea matInput placeholder="Description..." name="description" ngModel #inputDescription="ngModel"></textarea>
             </mat-form-field>
             
-            <button mat-raised-button color="accent">Add Book</button>
+            <button [disabled]="form.invalid" mat-raised-button color="accent">Add Book</button>
 
         </form>
     </mat-card-content>

@@ -8,6 +8,16 @@
     padding-block: 3em;
 }
 
+a {
+    text-decoration: none;
+    color: #2b837d;
+    padding-left: 0.6em;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 /* COVER */
 
 .card-cover {
@@ -37,6 +47,27 @@ img {
     font-weight: 400;  
 }
 
+.action{
+    margin: 0 auto;
+    width: 60%;
+    background-color: #F0E0C4;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 3em;
+    margin-bottom: 0.6em;
+    font-weight: 400;   
+}
+
+.action.red{
+    background-color: rgb(191, 75, 75);
+}
+
+.action:hover {
+    background-color: #F0E0C4;
+    color: #221F1B !important;
+    font-weight: 500;  
+}
+
 .mat-button-toggle:hover {
     background-color: #F0E0C4;
     color: #221F1B !important;
@@ -49,10 +80,15 @@ img {
     font-weight: 500;  
 }
 
+.left-actions {
+    display: flex;
+    flex-direction: column;
+}
+
 /* DETAILS */
 
 .card-details {
-    max-width: 60%;
+    width: 60%;
     height: 100%;
 }
 

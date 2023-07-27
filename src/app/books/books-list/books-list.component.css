@@ -15,3 +15,44 @@ table {
 h3 {
     font-weight: 500;
 }
+
+.action {
+    background-color: #377458;
+    color: #fff;
+    border-radius: 3em;
+    margin-right: 0.5em;
+    font-weight: 400;  
+}
+
+.action.red {
+    background-color: rgb(191, 75, 75); 
+}
+
+.action.update {
+    background-color: #F0E0C4;
+}
+
+.action:hover {
+    background-color: #F0E0C4;
+    color: #221F1B !important;
+    font-weight: 500;      
+}
+
+.action-checked {
+    background-color: #F0E0C4;
+    color: #221F1B !important;
+    font-weight: 500;  
+}
+
+.book-image,
+.book-title {
+    cursor: pointer;
+}
+
+.mat-elevation-z8 {
+    padding-inline: 3em;
+}
+
+.actions { 
+    text-align: end;
+}
