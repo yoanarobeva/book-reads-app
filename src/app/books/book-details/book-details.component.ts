@@ -76,7 +76,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       this.booksService.getABook(this.bookId).subscribe({
         next: (book) => {
           this.book = book;
-          console.log('book-details bookLog', book);  
         },
         error: err => {
           alert(err.message);

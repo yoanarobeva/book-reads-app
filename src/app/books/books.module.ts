@@ -10,6 +10,7 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { NewBookComponent } from './new-book/new-book.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateBookComponent } from './update-book/update-book.component';
 
 
 
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     BooksListComponent,
     NewBookComponent,
     BookDetailsComponent,
+    UpdateBookComponent,
   ],
   imports: [
     CommonModule, BooksRoutingModule, MaterialModule, SharedModule, HttpClientModule, FormsModule,
