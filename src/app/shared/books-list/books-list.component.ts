@@ -69,7 +69,6 @@ export class BooksListComponent implements OnInit, OnDestroy {
           next: (books) => {
             this.books = books;
             this.isLoading = false;
-            // console.log('from books-list, booksFromListLog', books);
           },
           error: err => {
             console.error(err.message);

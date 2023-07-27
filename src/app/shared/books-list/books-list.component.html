@@ -1,11 +1,11 @@
 <div class="isItAllView ? 'table-container': table-container-max" >
     <app-loading  *ngIf="isLoading"/>
     <h3 *ngIf="!isLoading">{{isItAllView ? list.display_name : 'User'}} books:</h3>
-    <p *ngIf="books.length === 0">There are no books!</p>
+    <p *ngIf="books?.length === 0">There are no books!</p>
 
-    <table *ngIf="!isLoading && books.length !== 0" mat-table [dataSource]="books" class="mat-elevation-z8">
+    <table *ngIf="!isLoading && books?.length !== 0" mat-table [dataSource]="books" class="mat-elevation-z8">
       
-      <p *ngIf="books.length === 0">There are no books!</p>
+      <p *ngIf="books?.length === 0">There are no books!</p>
       <!-- Image Column -->
       <ng-container matColumnDef="book_image" *ngIf="isItAllView">
           <th mat-header-cell *matHeaderCellDef> Cover </th>

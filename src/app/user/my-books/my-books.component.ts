@@ -58,13 +58,9 @@ export class MyBooksComponent implements OnInit, OnDestroy {
             this.shelvesService.getOwnShelves(this.user._id).subscribe({
                 next: data => {
                     this.userShelves = data;
-                    console.log("all", this.userShelves);
                     this.wantShelf = this.userShelves.filter((x:any) => x.shelf === 'want');
-                    console.log("want", this.wantShelf);
                     this.currentShelf = this.userShelves.find((x:any) => x.shelf === 'currently');
-                    console.log("currently", this.currentShelf);
                     this.readShelf = this.userShelves.filter((x:any) => x.shelf === 'read');
-                    console.log("read", this.readShelf);
                                 
                     if (this.selectedShelf === 'want') {
                         this.booksOnShelf = this.wantShelf;
@@ -75,7 +71,6 @@ export class MyBooksComponent implements OnInit, OnDestroy {
                     } else {
                         this.booksOnShelf = this.userShelves;
                     }
-                    console.log("BookOnShelf", this.booksOnShelf);
 
                     this.isLoading = false;
                 },
