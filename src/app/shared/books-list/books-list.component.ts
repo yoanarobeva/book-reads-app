@@ -22,7 +22,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
 
   @Input() view!: string;
   @Input() selectedShelf: string | undefined;
-  @Input() booksOnShelf: List[] | undefined;
+  @Input() booksOnShelf: Shelf[] | undefined;
 
   constructor(
     private authService: AuthService, 

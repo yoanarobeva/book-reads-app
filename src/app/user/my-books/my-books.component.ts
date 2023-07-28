@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
-import { BooksService } from 'src/app/books/services/books.service';
 import { ShelvesService } from 'src/app/books/services/shelves.service';
+import {Shelf, User } from 'src/app/shared/types';
 
 interface PeriodicElement {
   name: string;
@@ -32,16 +32,16 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class MyBooksComponent implements OnInit, OnDestroy {
-    userShelves: any;
-    wantShelf: any;
-    currentShelf: any;
-    readShelf: any ;
-    user: any;
+    userShelves: Shelf[] | undefined;
+    wantShelf: Shelf[] = [];
+    currentShelf: Shelf[] = [];
+    readShelf: Shelf[] = [];
+    user!: User;
     private sub: any;
     isLoading: boolean = false;
 
     selectedShelf: string = 'all'
-    booksOnShelf: any;
+    booksOnShelf: Shelf[] = [];
     
     constructor(
         private shelvesService: ShelvesService, 
@@ -56,22 +56,23 @@ export class MyBooksComponent implements OnInit, OnDestroy {
             this.isLoading = true;
 
             this.shelvesService.getOwnShelves(this.user._id).subscribe({
-                next: data => {
+                next: (data: any) => {
                     this.userShelves = data;
-                    this.wantShelf = this.userShelves.filter((x:any) => x.shelf === 'want');
-                    this.currentShelf = this.userShelves.find((x:any) => x.shelf === 'currently');
-                    this.readShelf = this.userShelves.filter((x:any) => x.shelf === 'read');
-                                
-                    if (this.selectedShelf === 'want') {
-                        this.booksOnShelf = this.wantShelf;
-                    } else if (this.selectedShelf === 'currently') {
-                        this.booksOnShelf = [this.currentShelf];
-                    } else if (this.selectedShelf === 'read') {
-                        this.booksOnShelf = this.readShelf;
-                    } else {
-                        this.booksOnShelf = this.userShelves;
-                    }
+                    if(this.userShelves) {
+                        this.wantShelf = this.userShelves.filter((x:any) => x.shelf === 'want');
+                        this.currentShelf = this.userShelves.filter((x:any) => x.shelf === 'currently');
+                        this.readShelf = this.userShelves.filter((x:any) => x.shelf === 'read');
 
+                        if (this.selectedShelf === 'want') {
+                            this.booksOnShelf = this.wantShelf;
+                        } else if (this.selectedShelf === 'currently') {
+                            this.booksOnShelf = this.currentShelf;
+                        } else if (this.selectedShelf === 'read') {
+                            this.booksOnShelf = this.readShelf;
+                        } else {
+                            this.booksOnShelf = this.userShelves;
+                        }
+                    }
                     this.isLoading = false;
                 },
                 error: err => alert(err.message)

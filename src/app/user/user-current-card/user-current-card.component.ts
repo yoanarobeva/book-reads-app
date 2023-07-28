@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BooksService } from 'src/app/books/services/books.service';
+import { Book, Shelf, User } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-user-current-card',
@@ -8,19 +9,22 @@ import { BooksService } from 'src/app/books/services/books.service';
   styleUrls: ['./user-current-card.component.css']
 })
 export class UserCurrentCardComponent implements OnInit{
-  book: any;
-  user: any;
+  book: Book | undefined;
+  user!: User;
+  isLoading: boolean = true;
 
-  @Input() currentShelf: any;
+  @Input() currentShelf!: Shelf[];
 
   constructor(private booksService: BooksService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.user = this.authService.user;
-    const bookId = this.currentShelf.bookId;
+    const oneBookOfShelf: Shelf = this.currentShelf[0];
+    const bookId = oneBookOfShelf.bookId;
     this.booksService.getABook(bookId).subscribe({
-      next: book => {
+      next: (book: any) => {
         this.book = book;
+        this.isLoading = false;
       },
       error: err => alert(err.message)
     })

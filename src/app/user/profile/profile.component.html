@@ -1,4 +1,5 @@
-<div class="container">
+<app-loading *ngIf="isLoading"/>
+<div class="container" *ngIf="!isLoading">
     <h2>Profile</h2>
     <mat-divider />
 
@@ -30,15 +31,15 @@
                 <h4>{{user.name | uppercase}}'S BOOKSHELVES</h4>
                 <mat-divider />
                 <ul>
-                    <li><a href="">Want to read ({{wantShelf?.length !==0 ? wantShelf?.length : 0}})</a></li>
+                    <li><a href="">Want to read ({{wantShelf.length}})</a></li>
                     <li>•</li>
-                    <li><a href="">Currently reading ({{currentShelf? 1 : 0 }})</a></li>
+                    <li><a href="">Currently reading ({{currentShelf.length}})</a></li>
                     <li>•</li>
-                    <li><a href="">Read ({{readShelf?.length !==0 ? readShelf?.length : 0}})</a></li>
+                    <li><a href="">Read ({{readShelf.length}})</a></li>
                 </ul>
             </div>
         
-            <app-user-current-card *ngIf="currentShelf" [currentShelf]="currentShelf"/>
+            <app-user-current-card *ngIf="currentShelf?.length" [currentShelf]="currentShelf"/>
         </div>
     
         <div class="right-side">

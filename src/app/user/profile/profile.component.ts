@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ShelvesService } from 'src/app/books/services/shelves.service';
+import { Shelf, User } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-profile',
@@ -8,12 +9,13 @@ import { ShelvesService } from 'src/app/books/services/shelves.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-    userShelves: any;
-    wantShelf: any;
-    currentShelf: any;
-    readShelf: any ;
+    userShelves: Shelf[] | undefined;
+    wantShelf: Shelf[] = [];
+    currentShelf: Shelf[] = [];
+    readShelf: Shelf[] = [];
+    isLoading: boolean = true;
 
-    user: any;
+    user!: User;
 
     constructor(private shelvesService: ShelvesService, private authService: AuthService) {};
 
@@ -21,11 +23,14 @@ export class ProfileComponent implements OnInit {
         this.user = this.authService.user;
         
         this.shelvesService.getOwnShelves(this.user._id).subscribe({
-            next: data => {
+            next: (data: any) => {
                 this.userShelves = data;
-                this.wantShelf = this.userShelves.filter((x:any) => x.shelf === 'want');
-                this.currentShelf = this.userShelves.find((x:any) => x.shelf === 'currently');
-                this.readShelf = this.userShelves.filter((x:any) => x.shelf === 'read');
+                if(this.userShelves) {
+                    this.wantShelf = this.userShelves.filter((x:any) => x.shelf === 'want');
+                    this.currentShelf = this.userShelves.filter((x:any) => x.shelf === 'currently');
+                    this.readShelf = this.userShelves.filter((x:any) => x.shelf === 'read');
+                    this.isLoading = false;
+                }
             },
             error: err => alert(err.message)
         });
