@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BooksService } from 'src/app/books/services/books.service';
+import { List } from '../types';
 
 @Component({
   selector: 'app-book-search',
@@ -7,7 +8,8 @@ import { BooksService } from 'src/app/books/services/books.service';
   styleUrls: ['./book-search.component.css']
 })
 export class BookSearchComponent implements OnInit{
-  lists: any;
+  lists!: List[];
+  isLoading = true;
 
   @Input('view') isItHomeView: boolean = false;
   
@@ -16,12 +18,11 @@ export class BookSearchComponent implements OnInit{
   ngOnInit(): void {
     
     this.booksService.getAllLists().subscribe({
-      next: (lists) => {
-        this.lists = lists;        
+      next: (lists: any) => {
+        this.lists = lists;
+        this.isLoading = false;        
       },
-      error(err) {
-        console.error(err);
-      },
+      error: err => alert(err.message)
     })
   }
 }

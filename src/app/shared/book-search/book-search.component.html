@@ -1,4 +1,4 @@
-<section [ngClass]="isItHomeView ? 'book-search home': 'book-search'">
+<section *ngIf="!isLoading" [ngClass]="isItHomeView ? 'book-search home': 'book-search'">
     <h3>Search and browse books</h3>
     <mat-list>
         <li *ngFor="let list of lists"><a routerLink="/books/{{list._id}}">{{list.display_name}}</a></li>

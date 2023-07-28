@@ -7,4 +7,5 @@ export interface Book {
     "_createdOn": string | number,
     "description": string,
     "title": string,
+    "shelf"?: string,
 }

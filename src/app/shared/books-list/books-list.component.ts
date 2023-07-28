@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BooksService } from 'src/app/books/services/books.service';
-import { ShelvesService } from 'src/app/books/services/shelves.service';
+import { Book, List, Shelf } from '../types';
 
 @Component({
   selector: 'app-books-list',
@@ -14,15 +14,15 @@ export class BooksListComponent implements OnInit, OnDestroy {
   displayedColumnsAll: string[] = ['book_image', 'title', 'author', 'action'];
   displayedColumnsShelf: string[] = ['book_image', 'title', 'author', 'shelf', 'action'];
 
-  books: any;
-  listId: any;
-  list: any;
+  books!: Book[];
+  listId!: string;
+  list!: List;
   private sub: any;
   isLoading: boolean = true;
 
   @Input() view!: string;
   @Input() selectedShelf: string | undefined;
-  @Input() booksOnShelf: any;
+  @Input() booksOnShelf: List[] | undefined;
 
   constructor(
     private authService: AuthService, 
@@ -53,31 +53,30 @@ export class BooksListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if(this.view === 'all') {
       this.sub = this.activatedRoutes.params.subscribe((params: Params) => {
-        this.listId = +params['listId'];
+        this.listId = params['listId'];
         this.isLoading = true;
   
         this.booksService.getAList(this.listId).subscribe({
-          next: (list) => {
+          next: (list: any) => {
             this.list = list;
           },
-          error: err => {
-            console.error(err.message);
-          } 
+          error: err => alert(err.message) 
         })
   
-        this.booksService.getBooksFromList(this.listId!).subscribe({
-          next: (books) => {
+        this.booksService.getBooksFromList(this.listId).subscribe({
+          next: (books: any) => {
             this.books = books;
             this.isLoading = false;
           },
-          error: err => {
-            console.error(err.message);
-          }     
+          error: err => alert(err.message)     
         })
       });
     } else {
-      this.books = this.booksOnShelf;
-      this.isLoading = false;
+      if(this.booksOnShelf) {
+        this.books = this.booksOnShelf.map((x: any) => ({...x.bookData, "shelf": x.shelf})) as Book[];
+        
+        this.isLoading = false;
+      }
     }
   }  
 
