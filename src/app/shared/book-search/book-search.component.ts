@@ -22,7 +22,7 @@ export class BookSearchComponent implements OnInit{
         this.lists = lists;
         this.isLoading = false;        
       },
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     })
   }
 }

@@ -57,7 +57,7 @@ export class AppInterceptor implements HttpInterceptor {
         if(err.status ===  401) {
           this.router.navigate(['/auth/login']);
         } else {
-          alert(err.message); //delete if you uncomment next
+          console.error(err.message); //delete if you uncomment next
           
           // this.router.navigate(['/error']);
           // this.errorService.setError(err);

@@ -14,11 +14,4 @@ export class HeaderComponent {
   get isLoggedIn(): boolean {
     return this.authService.isLogged;
   }
-
-  logout() {
-    this.authService.logout().subscribe(() => {
-      sessionStorage.clear();
-      this.router.navigate(["/"])
-    })
-  }
 }

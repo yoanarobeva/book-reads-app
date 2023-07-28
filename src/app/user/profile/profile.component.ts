@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
     constructor(private shelvesService: ShelvesService, private authService: AuthService) {};
 
     ngOnInit(): void {
-        this.user = this.authService.user;
+        this.user = this.authService.user!;
         
         this.shelvesService.getOwnShelves(this.user._id).subscribe({
             next: (data: any) => {
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
                     this.isLoading = false;
                 }
             },
-            error: err => alert(err.message)
+            error: err => console.error(err.message)
         });
     }
 }

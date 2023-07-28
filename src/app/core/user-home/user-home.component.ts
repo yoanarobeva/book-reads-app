@@ -19,7 +19,7 @@ export class UserHomeComponent implements OnInit{
     constructor(private shelvesService: ShelvesService, private authService: AuthService) {}
 
     ngOnInit(): void {
-        const userId = this.authService.user._id;
+        const userId = this.authService.user!._id;
         
         this.shelvesService.getOwnShelves(userId).subscribe({
             next: (data: any) => {
@@ -29,7 +29,7 @@ export class UserHomeComponent implements OnInit{
                 this.readShelf = this.userShelves?.filter((x:any) => x.shelf === 'read');
                 this.isLoading = false;
             },
-            error: err => alert(err.message)
+            error: err => console.error(err.message)
         });
     }
 }

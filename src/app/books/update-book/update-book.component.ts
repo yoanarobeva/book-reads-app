@@ -30,7 +30,7 @@ export class UpdateBookComponent implements OnInit, OnDestroy{
         const currentBook: Book = book;
         this.router.navigate([`/books/${currentBook._listId}/${currentBook._id}`]);
       },
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     })
   }
 
@@ -44,7 +44,7 @@ export class UpdateBookComponent implements OnInit, OnDestroy{
           this.book = book;
           this.isLoading = false;
         },
-        error: err => alert(err.message)
+        error: err => console.error(err.message)
       })
 
       this.booksService.getAllLists().subscribe({
@@ -52,7 +52,7 @@ export class UpdateBookComponent implements OnInit, OnDestroy{
           this.lists = lists;
           this.isLoading = false;        
         },
-        error: err => alert(err.message)
+        error: err => console.error(err.message)
       })
     });
   }

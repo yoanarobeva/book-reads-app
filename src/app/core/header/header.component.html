@@ -17,7 +17,7 @@
       </ng-container>
       <ng-container *ngIf="isLoggedIn">
         <button mat-button routerLink="/user/profile">Profile</button>
-        <button mat-button (click)="logout()">Sign Out</button>
+        <button mat-button routerLink="/auth/logout">Sign Out</button>
       </ng-container>
     </ng-container>
 </mat-toolbar>

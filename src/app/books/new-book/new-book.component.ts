@@ -28,7 +28,7 @@ export class NewBookComponent implements OnInit{
         const currentBook: Book = book;
         this.router.navigate([`/books/${currentBook._listId}/${currentBook._id}`]);
       },
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     })
     
   }
@@ -39,7 +39,7 @@ export class NewBookComponent implements OnInit{
         this.lists = lists;
         this.isLoading = false;        
       },
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     })
   }
 }

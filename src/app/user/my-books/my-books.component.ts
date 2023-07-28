@@ -52,7 +52,7 @@ export class MyBooksComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.sub =  this.activatedRoutes.params.subscribe((params: Params) => {
             this.selectedShelf = params['shelfName'];
-            this.user = this.authService.user;
+            this.user = this.authService.user!;
             this.isLoading = true;
 
             this.shelvesService.getOwnShelves(this.user._id).subscribe({
@@ -75,7 +75,7 @@ export class MyBooksComponent implements OnInit, OnDestroy {
                     }
                     this.isLoading = false;
                 },
-                error: err => alert(err.message)
+                error: err => console.error(err.message)
             });
         });
     }

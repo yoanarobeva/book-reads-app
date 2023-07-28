@@ -22,7 +22,6 @@ export class RegisterComponent {
     this.isLoading = true;
 
     //TODO: make matching passwords validation!!!!
-    console.log(form.value);
 
     const {name, email, password, rePassword} = form.value;
 
@@ -32,9 +31,7 @@ export class RegisterComponent {
         sessionStorage.setItem(USER_KEY, JSON.stringify(user));
         this.router.navigate(['/home']);
       },
-      error: err => {
-        alert(err.message);
-      }
+      error: err => console.error(err.message)
     });
   }
 }

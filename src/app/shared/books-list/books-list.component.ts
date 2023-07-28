@@ -39,14 +39,14 @@ export class BooksListComponent implements OnInit, OnDestroy {
   }
 
   get userId(): string {
-    return this.authService.user._id;   
+    return this.authService.user!._id;   
   }
 
   deleteBookHandler(bookId: string) {
     alert('Do you want to delete a book?');
     this.booksService.removeABook(bookId).subscribe({
       next:() => {},
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     })
   }
   
@@ -60,7 +60,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
           next: (list: any) => {
             this.list = list;
           },
-          error: err => alert(err.message) 
+          error: err => console.error(err.message)
         })
   
         this.booksService.getBooksFromList(this.listId).subscribe({
@@ -68,7 +68,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
             this.books = books;
             this.isLoading = false;
           },
-          error: err => alert(err.message)     
+          error: err => console.error(err.message)    
         })
       });
     } else {

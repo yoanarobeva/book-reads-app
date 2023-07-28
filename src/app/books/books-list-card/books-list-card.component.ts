@@ -21,7 +21,7 @@ export class BooksListCardComponent implements OnInit{
         this.books = books;
         this.isLoading = false;
       }, 
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     })
   }
 }

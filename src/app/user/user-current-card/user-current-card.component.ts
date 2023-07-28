@@ -18,7 +18,7 @@ export class UserCurrentCardComponent implements OnInit{
   constructor(private booksService: BooksService, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.user = this.authService.user;
+    this.user = this.authService.user!;
     const oneBookOfShelf: Shelf = this.currentShelf[0];
     const bookId = oneBookOfShelf.bookId;
     this.booksService.getABook(bookId).subscribe({
@@ -26,7 +26,7 @@ export class UserCurrentCardComponent implements OnInit{
         this.book = book;
         this.isLoading = false;
       },
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     })
   }
 }

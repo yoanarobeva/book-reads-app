@@ -15,7 +15,6 @@ export class ShelvesService {
 
   // getOwnShelf(userId: string, shelfName: string) {
   //   const match = encodeURIComponent(`shelf="${shelfName}",_ownerId="${userId}"`);
-  //   debugger;
   //   return this.http.get(`/api/data/shelves?where=${match}`);
   // }
 

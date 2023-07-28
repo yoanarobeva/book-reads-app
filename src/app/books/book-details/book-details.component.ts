@@ -53,7 +53,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     alert('Do you want to delete a book?');
     this.booksService.removeABook(bookId).subscribe({
       next:() => {},
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     })
   }
 
@@ -64,7 +64,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
         next: () => {
           this.selectedShelf = undefined;
         },
-        error: err => alert(err.message)
+        error: err => console.error(err.message)
       });
     }
 
@@ -73,7 +73,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
         this.selectedShelf = data;
         this.selectedShelfName = this.selectedShelf?.shelf;
       },
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     });
   }
 
@@ -87,11 +87,11 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
           this.book = book;
           this.isLoading = false;
         },
-        error: err => alert(err.message)
+        error: err => console.error(err.message)
       })
    })
 
-   const userId = this.authService.user._id;
+   const userId = this.authService.user!._id;
 
    this.shelvesService.getOwnShelves(userId).subscribe({
     next: (list: any) => {
@@ -101,7 +101,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
         this.selectedShelfName = this.selectedShelf?.shelf;
       }
     },
-    error: err => alert(err.message)
+    error: err => console.error(err.message)
    })
   }
 

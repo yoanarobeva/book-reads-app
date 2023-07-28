@@ -8,4 +8,5 @@ export interface User {
     "city": string,
     "img": string,
     "_createdOn": string | number,
+    "accessToken"?: string,
 }

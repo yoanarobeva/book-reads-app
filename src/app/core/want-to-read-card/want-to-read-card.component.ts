@@ -21,7 +21,7 @@ export class WantToReadCardComponent implements OnInit {
         this.book = book;
         this.isLoading = false;        
       },
-      error: err => alert(err.message)
+      error: err => console.error(err.message)
     })
   }
 }

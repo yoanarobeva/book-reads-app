@@ -8,10 +8,13 @@ import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
 import { appInterceptorProvider } from './app.interceptor';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthenticateComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     CoreModule,
     AppRoutingModule,
     HttpClientModule,
+    SharedModule,
   ],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
