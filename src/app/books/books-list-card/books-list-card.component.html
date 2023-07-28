@@ -1,6 +1,6 @@
-<div class="list-card">
+<div class="list-card" *ngIf="!isLoading">
     <div class="listImgs">
-        <a *ngFor="let book of books?.slice(0,5)" routerLink="/books/{{list._id}}/{{book._id}}">
+        <a *ngFor="let book of books.slice(0,5)" routerLink="/books/{{list._id}}/{{book._id}}">
             <img
                 alt="{{book.title | titlecase}}"
                 title="{{book.title | titlecase}}"
@@ -11,5 +11,5 @@
         {{list.display_name}}
     </a>
     <br />
-    <div class="listFullDetails">{{books?.length}} books</div>
+    <div class="listFullDetails">{{books.length}} books</div>
 </div>

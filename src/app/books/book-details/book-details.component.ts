@@ -3,6 +3,7 @@ import { BooksService } from '../services/books.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ShelvesService } from '../services/shelves.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Book, Shelf } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-book-details',
@@ -10,14 +11,14 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit, OnDestroy {
-  book: any;
+  book!: Book;
   listId!: string;
   bookId!: string;
-  isLoading: boolean = false;
+  isLoading: boolean = true;
   private sub: any;
-  selectedShelf: any;
+  selectedShelf: Shelf | undefined;
   selectedShelfName: string | undefined
-  booksOnShelves: any;
+  booksOnShelves: Shelf[] | undefined;
 
   constructor(
     private booksService: BooksService, 
@@ -43,8 +44,8 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
   
   get currentShelf () {
-    this.selectedShelf = this.booksOnShelves.find((x: any) => x.bookId === this.book._id)
-    this.selectedShelfName = this.selectedShelf.shelf;
+    this.selectedShelf = this.booksOnShelves?.find((x: any) => x.bookId === this.book._id)
+    this.selectedShelfName = this.selectedShelf?.shelf;
     return this.selectedShelfName;
   }
 
@@ -68,9 +69,9 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     }
 
     this.shelvesService.addBook(shelfName, this.listId, this.bookId).subscribe({
-      next: (data) => {
+      next: (data: any) => {
         this.selectedShelf = data;
-        this.selectedShelfName = this.selectedShelf.shelf;
+        this.selectedShelfName = this.selectedShelf?.shelf;
       },
       error: err => alert(err.message)
     });
@@ -80,26 +81,24 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     this.sub =  this.activatedRoutes.params.subscribe((params: Params) => {
       this.listId = params['listId'];
       this.bookId = params['bookId'];
-      this.isLoading = true;
 
       this.booksService.getABook(this.bookId).subscribe({
-        next: (book) => {
+        next: (book: any) => {
           this.book = book;
+          this.isLoading = false;
         },
-        error: err => {
-          alert(err.message);
-        }
+        error: err => alert(err.message)
       })
    })
 
    const userId = this.authService.user._id;
 
    this.shelvesService.getOwnShelves(userId).subscribe({
-    next: list => {
+    next: (list: any) => {
       this.booksOnShelves = list;
-      if (this.booksOnShelves.find((x: any) => x.bookId === this.bookId)) {
+      if (this.booksOnShelves?.find((x: any) => x.bookId === this.bookId)) {
         this.selectedShelf = this.booksOnShelves.find((x: any) => x.bookId === this.bookId);
-        this.selectedShelfName = this.selectedShelf.shelf;
+        this.selectedShelfName = this.selectedShelf?.shelf;
       }
     },
     error: err => alert(err.message)

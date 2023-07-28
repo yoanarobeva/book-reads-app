@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../services/books.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Book, List } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-new-book',
@@ -9,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./new-book.component.css']
 })
 export class NewBookComponent implements OnInit{
-  lists: any;
+  lists!: List[];
   isLoading: boolean = true;
 
   constructor(private booksService: BooksService, private router: Router) {}
@@ -23,9 +24,9 @@ export class NewBookComponent implements OnInit{
     console.log(form.value);
 
     this.booksService.addABook({title, author, _listId, book_image, description}).subscribe({
-      next: (book) => {
-        const currentBook: any = book;
-        this.router.navigate([`/books/${currentBook!._listId}/${currentBook!._id}`]);
+      next: (book: any) => {
+        const currentBook: Book = book;
+        this.router.navigate([`/books/${currentBook._listId}/${currentBook._id}`]);
       },
       error: err => alert(err.message)
     })
@@ -34,7 +35,7 @@ export class NewBookComponent implements OnInit{
 
   ngOnInit(): void {
     this.booksService.getAllLists().subscribe({
-      next: lists => {
+      next: (lists: any) => {
         this.lists = lists;
         this.isLoading = false;        
       },

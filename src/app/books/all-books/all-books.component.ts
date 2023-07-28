@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../services/books.service';
+import { List } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-all-books',
@@ -7,24 +8,18 @@ import { BooksService } from '../services/books.service';
   styleUrls: ['./all-books.component.css']
 })
 export class AllBooksComponent implements OnInit{
-  //TODO: make types!!!
-  lists: any;
+  lists!: List[];
   isLoading: boolean = true;
 
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
     this.booksService.getAllLists().subscribe({
-      next: (lists) => {
+      next: (lists: any) => {
         this.lists = lists;
-        this.isLoading = false;
-        // console.log('from all-books: listsLog', lists);
-        
+        this.isLoading = false;        
       },
-      error: (err) => {
-        console.log(err);
-      }
+      error: (err) => alert(err.message)
     })
   }
-
 }

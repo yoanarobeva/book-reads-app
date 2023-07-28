@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BooksService } from '../services/books.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Book, List } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-update-book',
@@ -9,8 +10,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./update-book.component.css']
 })
 export class UpdateBookComponent implements OnInit, OnDestroy{
-  book: any;
-  lists: any;
+  book!: Book;
+  lists!: List[];
   bookId!: string;
   isLoading: boolean = false;
   private sub: any;
@@ -25,13 +26,12 @@ export class UpdateBookComponent implements OnInit, OnDestroy{
     const {title, author, _listId, book_image, description} = form.value
 
     this.booksService.updateABook(this.bookId, {title, author, _listId, book_image, description}).subscribe({
-      next: (book) => {
-        const currentBook: any = book;
-        this.router.navigate([`/books/${currentBook!._listId}/${currentBook!._id}`]);
+      next: (book: any) => {
+        const currentBook: Book = book;
+        this.router.navigate([`/books/${currentBook._listId}/${currentBook._id}`]);
       },
       error: err => alert(err.message)
     })
-    
   }
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class UpdateBookComponent implements OnInit, OnDestroy{
       this.isLoading = true;
 
       this.booksService.getABook(this.bookId).subscribe({
-        next: book => {
+        next: (book: any) => {
           this.book = book;
           this.isLoading = false;
         },
@@ -48,7 +48,7 @@ export class UpdateBookComponent implements OnInit, OnDestroy{
       })
 
       this.booksService.getAllLists().subscribe({
-        next: lists => {
+        next: (lists: any) => {
           this.lists = lists;
           this.isLoading = false;        
         },
