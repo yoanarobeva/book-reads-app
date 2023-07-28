@@ -1,10 +1,11 @@
-<div class="main-container">
+<app-loading *ngIf="isLoading"/>
+<div class="main-container" *ngIf="!isLoading">
     <div class="container">
         <div class="left-side">
             <app-current-read-card *ngIf="currentShelf"  [bookId]="currentShelf.bookId"/>
             <mat-divider />
     
-            <div class="want-to-read">
+            <div class="want-to-read" *ngIf="wantShelf?.length">
                 <h4>WANT TO READ</h4>
                 <div class="img-container">
                     <app-want-to-read-card *ngFor="let shelf of wantShelf?.slice(0, 6)" [bookId]="shelf.bookId" />
@@ -16,7 +17,7 @@
             <div class="book-shelves">
                 <ul class="shelves">
                     <li><a routerLink="/user/my-books/want">{{wantShelf?.length}} Want to Read</a></li>
-                    <li><a routerLink="/user/my-books/currently">1 Currently Reading</a></li>
+                    <li><a routerLink="/user/my-books/currently">{{currentShelf ? 1 : 0}} Currently Reading</a></li>
                     <li><a routerLink="/user/my-books/read">{{readShelf?.length}} Read</a></li>
                 </ul>
             </div>

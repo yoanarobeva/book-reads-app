@@ -1,11 +1,11 @@
-<div class="currently-reading">
+<div class="currently-reading" *ngIf="!isLoading">
     <h4>CURRENTLY READING</h4>
     <div class="content">
-        <img src="{{book?.book_image}}" alt="{{book?.title}}" />
+        <img src="{{book.book_image}}" alt="{{book.title}}" />
         <div class="text">
-            <h3>{{book?.title}}</h3>
-            <p>{{book?.author}}</p>
-            <button mat-raised-button routerLink="/books/{{book?._listId}}/{{book?._id}}" color="accent">View Details</button>
+            <h3>{{book.title}}</h3>
+            <p>{{book.author}}</p>
+            <button mat-raised-button routerLink="/books/{{book._listId}}/{{book._id}}" color="accent">View Details</button>
         </div>
     </div>
 </div>

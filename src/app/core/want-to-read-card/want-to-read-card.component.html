@@ -1,1 +1,1 @@
-<img routerLink="/books/{{book?._listId}}/{{book?._id}}" src="{{book?.book_image}}" alt="{{book?.title}}" />
+<img *ngIf="!isLoading" routerLink="/books/{{book._listId}}/{{book._id}}" src="{{book.book_image}}" alt="{{book.title}}" />
