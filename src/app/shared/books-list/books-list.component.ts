@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BooksService } from 'src/app/books/services/books.service';
 import { Book, List, Shelf } from '../types';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-books-list',
@@ -17,7 +18,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
   books!: Book[];
   listId!: string;
   list!: List;
-  private sub: any;
+  private sub!: Subscription;
   isLoading: boolean = true;
 
   @Input() view!: string;

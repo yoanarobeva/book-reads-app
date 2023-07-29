@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ShelvesService } from 'src/app/books/services/shelves.service';
 import {Shelf, User } from 'src/app/shared/types';
@@ -37,7 +38,7 @@ export class MyBooksComponent implements OnInit, OnDestroy {
     currentShelf: Shelf[] = [];
     readShelf: Shelf[] = [];
     user!: User;
-    private sub: any;
+    private sub!: Subscription;
     isLoading: boolean = false;
 
     selectedShelf: string = 'all'

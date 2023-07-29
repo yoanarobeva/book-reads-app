@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ShelvesService } from '../services/shelves.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Book, Shelf } from 'src/app/shared/types';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-book-details',
@@ -15,10 +16,11 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   listId!: string;
   bookId!: string;
   isLoading: boolean = true;
-  private sub: any;
   selectedShelf: Shelf | undefined;
   selectedShelfName: string | undefined
   booksOnShelves: Shelf[] | undefined;
+  private subOne!: Subscription;
+  private subTwo!: Subscription;
 
   constructor(
     private booksService: BooksService, 
@@ -78,7 +80,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.sub =  this.activatedRoutes.params.subscribe((params: Params) => {
+    this.subOne =  this.activatedRoutes.params.subscribe((params: Params) => {
       this.listId = params['listId'];
       this.bookId = params['bookId'];
 
@@ -93,7 +95,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
    const userId = this.authService.user!._id;
 
-   this.shelvesService.getOwnShelves(userId).subscribe({
+   this.subTwo = this.shelvesService.getOwnShelves(userId).subscribe({
     next: (list: any) => {
       this.booksOnShelves = list;
       if (this.booksOnShelves?.find((x: any) => x.bookId === this.bookId)) {
@@ -106,6 +108,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.subOne.unsubscribe();
+    this.subTwo.unsubscribe();
   }
 }

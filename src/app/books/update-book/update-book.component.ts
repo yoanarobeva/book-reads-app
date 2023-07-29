@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { BooksService } from '../services/books.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Book, List } from 'src/app/shared/types';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-update-book',
@@ -14,7 +15,7 @@ export class UpdateBookComponent implements OnInit, OnDestroy{
   lists!: List[];
   bookId!: string;
   isLoading: boolean = false;
-  private sub: any;
+  private sub!: Subscription;
 
   constructor(private booksService: BooksService, private activatedRoutes: ActivatedRoute, private router: Router) {}
 
