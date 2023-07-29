@@ -2,10 +2,18 @@
     display: flex;
 }
 
-.friends-card img {
+.img-container {
+    position: relative;
     width: 90px;
     height: 90px;
+    overflow: hidden;
     margin-right: 1em;
+}
+
+.friends-card img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .friends-card-text h5 {

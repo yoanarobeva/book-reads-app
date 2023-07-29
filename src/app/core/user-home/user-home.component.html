@@ -45,9 +45,7 @@
             <h4>FIND FRIENDS</h4>
             <mat-divider />
             <div class="friends-card-container">
-                <app-friend-card />
-                <app-friend-card />
-                <app-friend-card />
+                <app-friend-card *ngFor="let user of users" [user]="user" [isFriend]="false"/>
             </div>
         </div>
     </div>

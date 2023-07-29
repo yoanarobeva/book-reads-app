@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BooksService } from '../services/books.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ShelvesService } from '../services/shelves.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Book, Shelf } from 'src/app/shared/types';
@@ -26,7 +26,8 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     private booksService: BooksService, 
     private activatedRoutes: ActivatedRoute, 
     private shelvesService: ShelvesService, 
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
   ) {}
 
   get isLoggedIn(): boolean {
@@ -54,7 +55,9 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   deleteBookHandler(bookId: string) {
     alert('Do you want to delete a book?');
     this.booksService.removeABook(bookId).subscribe({
-      next:() => {},
+      next:() => {
+        this.router.navigate([`/books/${this.listId}`])
+      },
       error: err => console.error(err.message)
     })
   }

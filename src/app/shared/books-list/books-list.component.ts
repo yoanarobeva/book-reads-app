@@ -42,14 +42,6 @@ export class BooksListComponent implements OnInit, OnDestroy {
   get userId(): string {
     return this.authService.user!._id;   
   }
-
-  deleteBookHandler(bookId: string) {
-    alert('Do you want to delete a book?');
-    this.booksService.removeABook(bookId).subscribe({
-      next:() => {},
-      error: err => console.error(err.message)
-    })
-  }
   
   ngOnInit(): void {
     if(this.view === 'all') {

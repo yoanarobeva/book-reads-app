@@ -1,8 +1,11 @@
 <div class="friends-card">
-    <img mat-card-sm-image src="../../../assets/profile.jpg" alt="friend name" />
+    <div class="img-container">
+        <img mat-card-sm-image src="{{user.img}}" alt="{{user.name}}" />
+    </div>
     <div class="friends-card-text">
-        <h5>Friend Name</h5>
-        <p>506 books | 106 friends</p>
-        <button *ngIf="!isFriend" mat-raised-button>Add to friends</button>
+        <h5>{{user.name}}</h5>
+        <p>{{user.city}} | {{user.age}} years</p>
+        <button *ngIf="!isFriend" (click)="addFriendHandler(user._id)" mat-raised-button>Add to friends</button>
+        <button *ngIf="isFriend" (click)="unfriendHandler(user._id)" mat-raised-button>Unfriend</button>
     </div>
 </div>

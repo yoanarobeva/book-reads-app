@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { User } from '../types';
+import { FriendsService } from 'src/app/user/friends.service';
 
 @Component({
   selector: 'app-friend-card',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./friend-card.component.css']
 })
 export class FriendCardComponent {
-  isFriend: boolean = false;
+  @Input() isFriend!: boolean;
+  @Input() user!: User;
+
+  constructor(private friendsService: FriendsService) {}
+
+  addFriendHandler(friendId: string) {
+    this.friendsService.addFriend(friendId).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: err => console.error(err.message)
+    })
+  }
+
+  unfriendHandler(friendId: string) {
+    
+  }
 }
