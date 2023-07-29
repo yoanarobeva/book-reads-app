@@ -23,15 +23,26 @@ export class RegisterComponent {
 
     //TODO: make matching passwords validation!!!!
 
-    const {name, email, password, rePassword} = form.value;
+    const {name, email, age, city, img, password, rePassword} = form.value;
 
-    this.authService.register(name, email, password).subscribe({
-      next: user => {
-        this.isLoading = false;
-        sessionStorage.setItem(USER_KEY, JSON.stringify(user));
-        this.router.navigate(['/home']);
-      },
-      error: err => console.error(err.message)
-    });
+    if (password === rePassword) {
+      this.authService.register(name, email, age, city, img, password).subscribe({
+        next: user => {
+          this.isLoading = false;
+          sessionStorage.setItem(USER_KEY, JSON.stringify({...user, name, age, city, img}));
+          this.router.navigate(['/home']);
+        },
+        error: err => console.error(err.message),
+        complete: () => {
+          this.authService.addUser(name, email, age, city, img, password).subscribe({
+            next: () => {},
+            error: err => console.error(err.message)
+          })
+        }
+      });
+    } else {
+      this.isLoading = false;
+      this.router.navigate(['/auth/register'])
+    }
   }
 }

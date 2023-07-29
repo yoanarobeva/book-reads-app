@@ -24,6 +24,24 @@
             </mat-form-field>
 
             <mat-form-field class="app-full-width">
+                <mat-label>Age</mat-label>
+                <input type="text" matInput placeholder="Age" name="age" ngModel #inputAge="ngModel" required>
+                <ng-container *ngIf="inputAge.touched">
+                    <mat-hint *ngIf="inputAge.errors?.['required']" class="error">Age is required!</mat-hint>
+                </ng-container>
+            </mat-form-field>
+
+            <mat-form-field class="app-full-width">
+                <mat-label>City</mat-label>
+                <input type="text" matInput placeholder="City" name="city" ngModel #inputCity="ngModel">
+            </mat-form-field>
+
+            <mat-form-field class="app-full-width">
+                <mat-label>Profile picture</mat-label>
+                <input type="text" matInput placeholder="http://"  name="img" ngModel #inputImage="ngModel">
+            </mat-form-field>
+
+            <mat-form-field class="app-full-width">
                 <mat-label>Password</mat-label>
                 <input matInput placeholder="Password" type="password" name="password" ngModel #inputPassword="ngModel" required minlength="6" >
                 <ng-container *ngIf="inputPassword.touched">

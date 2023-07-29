@@ -1,6 +1,6 @@
 <div class="friends-card">
     <div class="img-container">
-        <img mat-card-sm-image src="{{user.img}}" alt="{{user.name}}" />
+        <img mat-card-sm-image src="{{user.img ? user.img : '../../../../../assets/profile.jpg'}}" alt="{{user.name}}" />
     </div>
     <div class="friends-card-text">
         <h5>{{user.name}}</h5>

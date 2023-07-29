@@ -40,7 +40,7 @@ export class UserHomeComponent implements OnInit, OnDestroy{
         this.subTwo = this.friendsService.getUsers().subscribe({
             next: (users: any) => {
                 this.users = users;
-                this.users = this.users.filter((x: User) => x._id !== userId);
+                this.users = this.users.filter((x: User) => x._ownerId !== userId);
             },
             error: err => console.error(err.message)
         })

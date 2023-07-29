@@ -9,4 +9,6 @@ export interface User {
     "img": string,
     "_createdOn": string | number,
     "accessToken"?: string,
+    "_ownerId"?: string,
+    "password"? : string,
 }
