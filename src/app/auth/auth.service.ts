@@ -52,7 +52,7 @@ export class AuthService implements OnDestroy {
   }
 
   addUser(name:string, email: string, age: string, city: string, img: string, password: string) {
-    return this.http.post<User>('/api/data/users', JSON.stringify({name, email, age, city, img, password}));
+    return this.http.post<User>('/api/data/usersInfo', JSON.stringify({name, email, age, city, img, password}));
   }
 
   logout() {

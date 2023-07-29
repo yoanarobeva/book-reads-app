@@ -11,4 +11,5 @@ export interface User {
     "accessToken"?: string,
     "_ownerId"?: string,
     "password"? : string,
+    "friendshipId"? : string,
 }

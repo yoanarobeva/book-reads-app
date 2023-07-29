@@ -19,9 +19,7 @@ export class NewBookComponent implements OnInit{
     if(form.invalid) {
       return;
     }
-
     const {title, author, _listId, book_image, description} = form.value
-    console.log(form.value);
 
     this.booksService.addABook({title, author, _listId, book_image, description}).subscribe({
       next: (book: any) => {

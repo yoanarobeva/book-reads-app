@@ -46,7 +46,7 @@
             <h4>{{user.name | uppercase}}'S FRIENDS (59)</h4>
             <mat-divider />
             <div class="friends-card-container">             
-                <app-friend-card *ngFor="let friend of friends" [user]="friend" [isFriend]="true"/>
+                <app-friend-card *ngFor="let friend of friends" [user]="friend" [isFriend]="true" (newfriendEvent)="unfriend($event)"/>
                 <a href="" class="more-friends">More friends...</a>
             </div>
         </div>

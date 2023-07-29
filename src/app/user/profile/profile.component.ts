@@ -24,6 +24,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     constructor(private shelvesService: ShelvesService, private authService: AuthService, private friendsService: FriendsService) {};
 
+    unfriend(friendId: string) {
+        this.friends = this.friends?.filter((x:User) => x._id !== friendId);
+    }
+
     ngOnInit(): void {
         this.user = this.authService.user!;
         
@@ -40,10 +44,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
             error: err => console.error(err.message)
         });
 
-        this.subTwo = this.friendsService.getUsers().subscribe({
+        this.subTwo = this.friendsService.getFriends(this.user._id).subscribe({
             next: (friends: any) => {
                 this.friends = friends;
-                console.log(friends);
+                this.friends = this.friends?.map((x: any) => ({...x.friendData, "friendshipId" : x._id}))
             },
             error: err => console.error(err.message)
         })

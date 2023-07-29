@@ -23,6 +23,10 @@ export class UserHomeComponent implements OnInit, OnDestroy{
 
     constructor(private shelvesService: ShelvesService, private authService: AuthService, private friendsService: FriendsService) {}
 
+    addFriend(friendId: string) {
+        this.users = this.users.filter((x: User) => x._id !== friendId);
+    }
+
     ngOnInit(): void {
         const userId = this.authService.user!._id;
         
@@ -42,7 +46,19 @@ export class UserHomeComponent implements OnInit, OnDestroy{
                 this.users = users;
                 this.users = this.users.filter((x: User) => x._ownerId !== userId);
             },
-            error: err => console.error(err.message)
+            error: err => console.error(err.message),
+            complete: () => {
+                this.friendsService.getFriends(userId).subscribe({
+                    next: (data) => {
+                        const friends = data;
+                        Object.values(friends).forEach((friend: any) => {
+                            this.users = this.users.filter(x => x._id !== friend.friendId);
+                        })
+                        
+                    },
+                    error: err => console.error(err.message)
+                })
+            }
         })
     }
 
