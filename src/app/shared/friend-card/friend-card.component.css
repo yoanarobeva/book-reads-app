@@ -1,0 +1,27 @@
+.friends-card {
+    display: flex;
+}
+
+.friends-card img {
+    width: 90px;
+    height: 90px;
+    margin-right: 1em;
+}
+
+.friends-card-text h5 {
+    margin: 0;
+    font-weight: normal;
+    color: #2b837d;
+}
+
+p{
+    margin: 0.2em;
+    font-size: 0.8em;
+    color: #333;
+}
+
+button {
+    font-size: 0.8em;
+    padding: 0.5em;
+    margin-top: 1em;
+}

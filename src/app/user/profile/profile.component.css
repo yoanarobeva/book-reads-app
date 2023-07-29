@@ -39,7 +39,7 @@ h4 {
 /* LEFT SIDE */
 
 .left-side {
-    flex: 0 0 50%;
+    flex: 0 0 60%;
     padding-right: 5em;
 }
 
@@ -101,6 +101,7 @@ h4 {
 
 .right-side {
     flex: 0 0 30%;
+    margin-inline: auto 0;
 }
 
 .friends-card-container {
@@ -108,23 +109,6 @@ h4 {
     flex-direction: column;
     gap: 1em;
     padding-top: 1em;
-}
-
-.friends-card {
-    display: flex;
-}
-
-.friends-card img {
-    width: 60px;
-    height: 60px;
-    margin-right: 1em;
-}
-
-.friends-card-text h5 {
-    margin: 0;
-    font-weight: normal;
-    color: #2b837d;
-    padding-bottom: 0.2em;
 }
 
 .friends-card-text p {

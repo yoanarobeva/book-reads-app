@@ -5,6 +5,7 @@ import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { LoadingComponent } from './loading/loading.component';
 import { BooksListComponent } from './books-list/books-list.component';
+import { FriendCardComponent } from './friend-card/friend-card.component';
 
 
 @NgModule({
@@ -12,12 +13,13 @@ import { BooksListComponent } from './books-list/books-list.component';
     BookSearchComponent,
     LoadingComponent,
     BooksListComponent,
+    FriendCardComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
   ],
-  exports: [BookSearchComponent, LoadingComponent, BooksListComponent ]
+  exports: [BookSearchComponent, LoadingComponent, BooksListComponent, FriendCardComponent ]
 })
 export class SharedModule { }

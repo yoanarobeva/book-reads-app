@@ -1,19 +1,21 @@
 .main-container {
     background-color: #FAF6F0;
+    width: 100vw;
 }
 
 .container {
     display: flex;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     padding-bottom: 5em;
+    justify-content: space-between;
 }
 
 /* LEFT SIDE */
 
 .left-side {
+    flex: 0 0 20%;
     max-width: 300px;
-    padding-right: 5em;
 }
 
 a {
@@ -57,13 +59,14 @@ mat-divider {
     padding-top: 0.6em;
 }
 
-/* RIGHT SIDE */
+/* Center */
 
-.right-side {
+.center {
     flex: 0 0 50%;
+    padding-inline: 5em;
 }
 
-.right-side h3 {
+.center h3 {
     font-weight: 500;
 }
 
@@ -93,4 +96,17 @@ mat-divider {
     display: flex;
     flex-direction: column;
     gap: 1.5em;
+}
+
+/* RIGHT SIDE */
+
+.right-side {
+    flex: 0 0 20%;
+}
+
+.friends-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-top: 1em;
 }
