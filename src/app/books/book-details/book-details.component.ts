@@ -5,6 +5,7 @@ import { ShelvesService } from '../services/shelves.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Book, Shelf } from 'src/app/shared/types';
 import { Subscription } from 'rxjs';
+import { ActivitiesService } from '../services/activities.service';
 
 @Component({
   selector: 'app-book-details',
@@ -28,6 +29,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     private shelvesService: ShelvesService, 
     private authService: AuthService,
     private router: Router,
+    private activitiesService: ActivitiesService,
   ) {}
 
   get isLoggedIn(): boolean {
@@ -76,6 +78,13 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     this.shelvesService.addBook(shelfName, this.listId, this.bookId).subscribe({
       next: (data: any) => {
         this.selectedShelf = data;
+        console.log("before adding activity", this.selectedShelf); 
+        this.activitiesService.registerActivity(shelfName, this.listId, this.bookId).subscribe({
+          next: (data) => {
+            console.log("added activity", data);
+          },
+          error: err => console.error(err.message)
+        })
         this.selectedShelfName = this.selectedShelf?.shelf;
       },
       error: err => console.error(err.message)

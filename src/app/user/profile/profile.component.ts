@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ShelvesService } from 'src/app/books/services/shelves.service';
 import { Shelf, User } from 'src/app/shared/types';
-import { FriendsService } from '../friends.service';
+import { FriendsService } from '../services/friends.service';
 
 @Component({
   selector: 'app-profile',

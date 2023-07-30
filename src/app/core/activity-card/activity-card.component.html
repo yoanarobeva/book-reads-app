@@ -1,19 +1,19 @@
 <mat-card class="activity-card">
     <mat-card-header>
-        <img class="avatar" mat-card-avatar class="example-header-image" src="../../../assets/profile.jpg" alt="profile image" />
-        <mat-card-title>Friend Name</mat-card-title>
-        <mat-card-subtitle>finished reading</mat-card-subtitle>
+        <img class="avatar" mat-card-avatar class="example-header-image" src="{{activity.friendImage}}" alt="{{activity.friendName}}" />
+        <mat-card-title>{{activity.friendName}}</mat-card-title>
+        <ng-container [ngSwitch]="activity.activity">
+            <mat-card-subtitle class="action" *ngSwitchCase="'want'">wants to read</mat-card-subtitle>
+            <mat-card-subtitle class="action" *ngSwitchCase="'currently'">is reading</mat-card-subtitle>
+            <mat-card-subtitle class="action" *ngSwitchCase="'read'">has read</mat-card-subtitle>
+        </ng-container>
     </mat-card-header>
     <mat-card-content>
-        <img class="book-cover" mat-card-image src="https://storage.googleapis.com/du-prd/books/images/9781538756591.jpg" alt="Photo of a Shiba Inu">
+        <img class="book-cover" mat-card-image src="{{activity.book.book_image}}" alt="{{activity.book.title}}">
         <div class="text">
-            <h4>Book Title</h4>
-            <mat-card-subtitle>Author Name</mat-card-subtitle>
-            <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                bred for hunting.
-            </p>
+            <h4>{{activity.book.title}}</h4>
+            <mat-card-subtitle>{{activity.book.author}}</mat-card-subtitle>
+            <p>{{activity.book.description}}</p>
         </div>
     </mat-card-content>
     <mat-card-actions>

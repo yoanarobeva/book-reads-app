@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../types';
-import { FriendsService } from 'src/app/user/friends.service';
+import { FriendsService } from 'src/app/user/services/friends.service';
 import { Router } from '@angular/router';
 
 @Component({

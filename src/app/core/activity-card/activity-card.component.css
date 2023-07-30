@@ -24,6 +24,12 @@ h4 {
     min-width: 300px;
 }
 
+.action {
+    position: relative;
+    right: 0.6em;
+
+}
+
 .activity-card mat-card-content {
     display: flex;
     gap: 2em;

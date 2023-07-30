@@ -35,9 +35,7 @@
             <h3>UPDATES</h3>
     
             <div class="activities">
-                <app-activity-card />
-                <app-activity-card />
-                <app-activity-card />
+                <app-activity-card *ngFor="let activity of activities" [activity]="activity"/>
             </div>
         </div>
 
