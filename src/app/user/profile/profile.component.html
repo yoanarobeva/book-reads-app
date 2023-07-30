@@ -7,7 +7,8 @@
         <div class="left-side">
             <div class="user-info">
                 <div class="img-container">
-                    <img mat-card-md-image src="{{user.img}}" alt="profile image" />
+                    <img mat-card-md-image *ngIf="user.img" src="{{user.img}}" alt="profile image" />
+                    <img mat-card-md-image *ngIf="!user.img" src="../../../assets/profile.jpg" alt="profile image" />
                 </div>
 
                 <div class="text">
@@ -31,11 +32,11 @@
                 <h4>{{user.name | uppercase}}'S BOOKSHELVES</h4>
                 <mat-divider />
                 <ul>
-                    <li><a href="">Want to read ({{wantShelf.length}})</a></li>
+                    <li><a routerLink="/user/my-books/want">Want to read ({{wantShelf.length}})</a></li>
                     <li>•</li>
-                    <li><a href="">Currently reading ({{currentShelf.length}})</a></li>
+                    <li><a routerLink="/user/my-books/currently">Currently reading ({{currentShelf.length}})</a></li>
                     <li>•</li>
-                    <li><a href="">Read ({{readShelf.length}})</a></li>
+                    <li><a routerLink="/user/my-books/read">Read ({{readShelf.length}})</a></li>
                 </ul>
             </div>
         
