@@ -27,6 +27,10 @@ export class UserHomeComponent implements OnInit, OnDestroy{
         this.users = this.users.filter((x: User) => x._id !== friendId);
     }
 
+    get isLoggedIn () {
+        return this.authService.isLogged;
+    }
+
     ngOnInit(): void {
         const userId = this.authService.user!._id;
         
@@ -64,5 +68,6 @@ export class UserHomeComponent implements OnInit, OnDestroy{
 
     ngOnDestroy(): void {
         this.subOne.unsubscribe();
+        this.subTwo.unsubscribe();
     }
 }

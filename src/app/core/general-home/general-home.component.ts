@@ -6,14 +6,10 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './general-home.component.html',
   styleUrls: ['./general-home.component.css']
 })
-export class GeneralHomeComponent implements OnChanges{
+export class GeneralHomeComponent {
   constructor (private authService: AuthService) {}
 
   get isLoggedIn () {
     return this.authService.isLogged;
-  }
-  
-  ngOnChanges(changes: SimpleChanges) {
-    this.isLoggedIn;
   }
 }

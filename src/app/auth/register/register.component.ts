@@ -29,7 +29,7 @@ export class RegisterComponent {
       this.authService.register(name, email, age, city, img, password).subscribe({
         next: user => {
           this.isLoading = false;
-          sessionStorage.setItem(USER_KEY, JSON.stringify({...user, name, age, city, img}));
+          // sessionStorage.setItem(USER_KEY, JSON.stringify({...user, name, age, city, img}));
           this.router.navigate(['/home']);
         },
         error: err => console.error(err.message),

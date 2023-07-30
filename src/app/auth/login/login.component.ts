@@ -25,7 +25,7 @@ export class LoginComponent {
     this.authService.login(email, password).subscribe({
       next: user => {
         this.isLoading = false;
-        sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+        // sessionStorage.setItem(USER_KEY, JSON.stringify(user));
         this.router.navigate(['/home']);
       },
       error: err => {
