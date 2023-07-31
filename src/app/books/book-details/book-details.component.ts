@@ -105,22 +105,25 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       })
    })
 
-   const userId = this.authService.user!._id;
+   const userId = this.authService.user?._id;
 
-   this.subTwo = this.shelvesService.getOwnShelves(userId).subscribe({
-    next: (list: any) => {
-      this.booksOnShelves = list;
-      if (this.booksOnShelves?.find((x: any) => x.bookId === this.bookId)) {
-        this.selectedShelf = this.booksOnShelves.find((x: any) => x.bookId === this.bookId);
-        this.selectedShelfName = this.selectedShelf?.shelf;
-      }
-    },
-    error: err => console.error(err.message)
-   })
+   if(userId) {
+     this.subTwo = this.shelvesService.getOwnShelves(userId).subscribe({
+      next: (list: any) => {
+        this.booksOnShelves = list;
+        if (this.booksOnShelves?.find((x: any) => x.bookId === this.bookId)) {
+          this.selectedShelf = this.booksOnShelves.find((x: any) => x.bookId === this.bookId);
+          this.selectedShelfName = this.selectedShelf?.shelf;
+        }
+      },
+      error: err => console.error(err.message)
+     })
+   }
+
   }
 
   ngOnDestroy(): void {
     this.subOne.unsubscribe();
-    this.subTwo.unsubscribe();
+    this.subTwo?.unsubscribe();
   }
 }
