@@ -14,13 +14,14 @@
             <h4>{{activity.book.title}}</h4>
             <mat-card-subtitle>{{activity.book.author}}</mat-card-subtitle>
             <p>{{activity.book.description}}</p>
+            <mat-card-subtitle>{{activity._createdOn | date : 'medium'}}</mat-card-subtitle>
         </div>
     </mat-card-content>
-    <mat-card-actions>
+    <!-- <mat-card-actions>
         <ul>
             <li><a href="">LIKE</a></li>
             <li>•</li>
             <li><a href="">COMMENT</a></li>
         </ul>
-    </mat-card-actions>
+    </mat-card-actions> -->
 </mat-card>
