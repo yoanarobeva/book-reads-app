@@ -5,7 +5,7 @@
     <div class="friends-card-text">
         <h5>{{user.name}}</h5>
         <p>{{user.city}} | {{user.age}} years</p>
-        <button *ngIf="!isFriend" (click)="addFriendHandler(user._id)" mat-raised-button>Add to friends</button>
-        <button *ngIf="isFriend && user.friendshipId" (click)="unfriendHandler(user.friendshipId)" mat-raised-button>Unfriend</button>
+        <button *ngIf="!isFriend" (click)="addFriendHandler(user._id)" mat-raised-button>Follow</button>
+        <button *ngIf="isFriend && user.friendshipId" (click)="unfriendHandler(user.friendshipId)" mat-raised-button>Unfollow</button>
     </div>
 </div>

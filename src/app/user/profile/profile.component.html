@@ -44,11 +44,12 @@
         </div>
     
         <div class="right-side">
-            <h4>{{user.name | uppercase}}'S FRIENDS (59)</h4>
+            <h4>{{user.name | uppercase}} IS FOLLOWING {{friends?.length ? friends?.length : "..."}}</h4>
             <mat-divider />
-            <div class="friends-card-container">             
+            <div class="friends-card-container">
+                <p *ngIf="friends?.length === 0 || friends === undefined">You are not following...</p>             
                 <app-friend-card *ngFor="let friend of friends" [user]="friend" [isFriend]="true" (newfriendEvent)="unfriend($event)"/>
-                <a href="" class="more-friends">More friends...</a>
+                <!-- <a href="" class="more-friends">More friends...</a> -->
             </div>
         </div>
     </div>

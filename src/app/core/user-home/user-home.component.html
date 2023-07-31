@@ -35,12 +35,13 @@
             <h3>UPDATES</h3>
     
             <div class="activities">
+                <p *ngIf="activities.length === 0">There are no updates to show...</p>
                 <app-activity-card *ngFor="let activity of activities" [activity]="activity"/>
             </div>
         </div>
 
         <div class="right-side">
-            <h4>FIND FRIENDS</h4>
+            <h4>Follow</h4>
             <mat-divider />
             <div class="friends-card-container">
                 <app-friend-card *ngFor="let user of users" [user]="user" [isFriend]="false" (newfriendEvent)="addFriend($event)"/>
