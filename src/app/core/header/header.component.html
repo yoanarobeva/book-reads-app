@@ -4,11 +4,11 @@
     <button *ngIf="isLoggedIn" mat-button routerLink="/user/my-books">My Books</button>
     <button mat-button routerLink="/books">Browse Books</button>
     <button *ngIf="isLoggedIn" mat-button routerLink="/books/new">Add New Book</button>
-    <mat-form-field class="search-field">
+    <!-- <mat-form-field class="search-field">
       <mat-label>Search books</mat-label>
       <input type="text" matInput>
       <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
+    </mat-form-field> -->
     <span class="example-spacer"></span>
     <ng-container>
       <ng-container *ngIf="!isLoggedIn">
