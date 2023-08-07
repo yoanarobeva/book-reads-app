@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { BooksService } from 'src/app/books/services/books.service';
 import { Book } from 'src/app/shared/types';
 
@@ -7,21 +8,26 @@ import { Book } from 'src/app/shared/types';
   templateUrl: './want-to-read-card.component.html',
   styleUrls: ['./want-to-read-card.component.css']
 })
-export class WantToReadCardComponent implements OnInit {
+export class WantToReadCardComponent implements OnInit, OnDestroy {
   book!: Book;
   isLoading: boolean = true;
+  sub!: Subscription;
 
-  @Input() bookId: any;
+  @Input() bookId!: string;
 
   constructor (private booksService: BooksService) {}
 
   ngOnInit(): void {
-    this.booksService.getABook(this.bookId).subscribe({
+    this.sub = this.booksService.getABook(this.bookId).subscribe({
       next: (book: any) => {
         this.book = book;
         this.isLoading = false;        
       },
       error: err => console.error(err.message)
     })
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

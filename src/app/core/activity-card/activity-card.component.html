@@ -9,11 +9,11 @@
         </ng-container>
     </mat-card-header>
     <mat-card-content>
-        <img class="book-cover" mat-card-image src="{{activity.book.book_image}}" alt="{{activity.book.title}}">
+        <img class="book-cover" mat-card-image src="{{activity.book?.book_image}}" alt="{{activity.book?.title}}">
         <div class="text">
-            <h4>{{activity.book.title}}</h4>
-            <mat-card-subtitle>{{activity.book.author}}</mat-card-subtitle>
-            <p>{{activity.book.description}}</p>
+            <h4>{{activity.book?.title}}</h4>
+            <mat-card-subtitle>{{activity.book?.author}}</mat-card-subtitle>
+            <p>{{activity.book?.description}}</p>
             <mat-card-subtitle>{{activity._createdOn | date : 'medium'}}</mat-card-subtitle>
         </div>
     </mat-card-content>

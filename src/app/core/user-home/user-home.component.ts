@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ActivitiesService } from 'src/app/books/services/activities.service';
 import { ShelvesService } from 'src/app/books/services/shelves.service';
-import { Shelf, User } from 'src/app/shared/types';
+import { Activity, Friend, Shelf, User } from 'src/app/shared/types';
 import { FriendsService } from 'src/app/user/services/friends.service';
 
 @Component({
@@ -18,8 +18,8 @@ export class UserHomeComponent implements OnInit, OnDestroy{
     readShelf: Shelf[] | undefined ;
     isLoading: boolean = true;
     users!: User[];
-    friends: any;
-    activities: any = [];
+    friends: Friend[] = [];
+    activities: Activity[] = [];
 
     subOne!: Subscription;
     subTwo!: Subscription;
@@ -45,10 +45,9 @@ export class UserHomeComponent implements OnInit, OnDestroy{
         this.subOne = this.shelvesService.getOwnShelves(userId).subscribe({
             next: (data: any) => {
                 this.userShelves = data;
-                this.wantShelf = this.userShelves?.filter((x:any) => x.shelf === 'want');
-                this.currentShelf = this.userShelves?.find((x:any) => x.shelf === 'currently');
-                this.readShelf = this.userShelves?.filter((x:any) => x.shelf === 'read');
-                this.isLoading = false;
+                this.wantShelf = this.userShelves?.filter((x: Shelf) => x.shelf === 'want');
+                this.currentShelf = this.userShelves?.find((x: Shelf) => x.shelf === 'currently');
+                this.readShelf = this.userShelves?.filter((x: Shelf) => x.shelf === 'read');
             },
             error: err => console.error(err.message)
         });
@@ -57,7 +56,6 @@ export class UserHomeComponent implements OnInit, OnDestroy{
             next: (users: any) => {
                 this.users = users;
                 this.users = this.users.filter((x: User) => x._ownerId !== userId);
-                // console.log('this.users', this.users);
                 
             },
             error: err => console.error(err.message),
@@ -67,24 +65,21 @@ export class UserHomeComponent implements OnInit, OnDestroy{
                         if(data) {
                             this.friends = data;
                             this.friends = this.friends?.map((x: any) => ({...x.friendData}));
-                            // console.log("friends", this.friends);
 
                             this.friends.forEach((friend: any) => {
-                                // console.log('eachfriend', friend);
                                 
                                 this.activitiesService.getUserActivities(friend._ownerId).subscribe({
                                     next: (activities: any) => {
-                                        const currentActivities = activities.map((x: any) => ({...x, "friendImage": friend.img, "friendName": friend.name}))
+                                        const currentActivities = activities.map((x: Activity) => ({...x, "friendImage": friend.img, "friendName": friend.name}))
                                         this.activities = [...this.activities, ...currentActivities, ]
                                         this.activities.sort((a:any, b:any) => a._createdOn - b._createdOn);
                                         this.activities = this.activities.slice(0, 10);
-                                        // console.log("user activity", currentActivities);
-                                        // console.log("all users activities", this.activities);
                                     },
                                     error: err => console.error(err.message)
                                 })
                                 this.users = this.users.filter(x => x._ownerId !== friend._ownerId);
                             })
+                            this.isLoading = false;
                         }  
                     },
                     error: err => console.error(err.message)

@@ -49,19 +49,20 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
   
   get currentShelf () {
-    this.selectedShelf = this.booksOnShelves?.find((x: any) => x.bookId === this.book._id)
+    this.selectedShelf = this.booksOnShelves?.find((x: Shelf) => x.bookId === this.book._id)
     this.selectedShelfName = this.selectedShelf?.shelf;
     return this.selectedShelfName;
   }
 
   deleteBookHandler(bookId: string) {
-    alert('Do you want to delete a book?');
-    this.booksService.removeABook(bookId).subscribe({
-      next:() => {
-        this.router.navigate([`/books/${this.listId}`])
-      },
-      error: err => console.error(err.message)
-    })
+    if (confirm('Do you want to delete a book?')) {
+      this.booksService.removeABook(bookId).subscribe({
+        next:() => {
+          this.router.navigate([`/books/${this.listId}`])
+        },
+        error: err => console.error(err.message)
+      })
+    }
   }
 
   onShelfChange(shelfName: string) {
@@ -111,8 +112,8 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
      this.subTwo = this.shelvesService.getOwnShelves(userId).subscribe({
       next: (list: any) => {
         this.booksOnShelves = list;
-        if (this.booksOnShelves?.find((x: any) => x.bookId === this.bookId)) {
-          this.selectedShelf = this.booksOnShelves.find((x: any) => x.bookId === this.bookId);
+        if (this.booksOnShelves?.find((x: Shelf) => x.bookId === this.bookId)) {
+          this.selectedShelf = this.booksOnShelves.find((x: Shelf) => x.bookId === this.bookId);
           this.selectedShelfName = this.selectedShelf?.shelf;
         }
       },

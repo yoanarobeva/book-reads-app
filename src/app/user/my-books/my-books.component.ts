@@ -60,9 +60,9 @@ export class MyBooksComponent implements OnInit, OnDestroy {
                 next: (data: any) => {
                     this.userShelves = data;
                     if(this.userShelves) {
-                        this.wantShelf = this.userShelves.filter((x:any) => x.shelf === 'want');
-                        this.currentShelf = this.userShelves.filter((x:any) => x.shelf === 'currently');
-                        this.readShelf = this.userShelves.filter((x:any) => x.shelf === 'read');
+                        this.wantShelf = this.userShelves.filter((x:Shelf) => x.shelf === 'want');
+                        this.currentShelf = this.userShelves.filter((x:Shelf) => x.shelf === 'currently');
+                        this.readShelf = this.userShelves.filter((x:Shelf) => x.shelf === 'read');
 
                         if (this.selectedShelf === 'want') {
                             this.booksOnShelf = this.wantShelf;

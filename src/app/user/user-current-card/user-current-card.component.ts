@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BooksService } from 'src/app/books/services/books.service';
 import { Book, Shelf, User } from 'src/app/shared/types';
@@ -8,10 +9,11 @@ import { Book, Shelf, User } from 'src/app/shared/types';
   templateUrl: './user-current-card.component.html',
   styleUrls: ['./user-current-card.component.css']
 })
-export class UserCurrentCardComponent implements OnInit{
+export class UserCurrentCardComponent implements OnInit, OnDestroy{
   book: Book | undefined;
   user!: User;
   isLoading: boolean = true;
+  sub!: Subscription;
 
   @Input() currentShelf!: Shelf[];
 
@@ -21,12 +23,16 @@ export class UserCurrentCardComponent implements OnInit{
     this.user = this.authService.user!;
     const oneBookOfShelf: Shelf = this.currentShelf[0];
     const bookId = oneBookOfShelf.bookId;
-    this.booksService.getABook(bookId).subscribe({
+    this.sub = this.booksService.getABook(bookId).subscribe({
       next: (book: any) => {
         this.book = book;
         this.isLoading = false;
       },
       error: err => console.error(err.message)
     })
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

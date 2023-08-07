@@ -6,5 +6,6 @@ export interface Shelf {
     "listId": string,
     "bookId": string,
     "shelf": string,
+    "_createdOn": string,
     "bookData"?: Book,
 }
