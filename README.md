@@ -41,9 +41,10 @@ Users initialized on server:
 The client application is build with:
 
 - Angular CLI: 16.1.4
+- RxJS
 - TypeScript
 - HTML + CSS
-- Bootstrap
+- Angular Material
 
 To run the project:
 
