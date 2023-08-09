@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Activity } from 'src/app/shared/types';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class ActivitiesService {
   }
 
   getUserActivities(userId: string) {
-    return this.http.get(`/api/data/activities?where=_ownerId%3D%22${userId}%22&load=book%3DbookId%3Abooks`);
+    return this.http.get<Activity[]>(`/api/data/activities?where=_ownerId%3D%22${userId}%22&load=book%3DbookId%3Abooks`);
   }
 }

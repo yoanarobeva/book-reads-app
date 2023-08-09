@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Friend } from 'src/app/shared/types';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class FriendsService {
   }
 
   getFriends(userId: string) {
-    return this.http.get(`/api/data/friends?where=_ownerId%3D%22${userId}%22&load=friendData%3DfriendId%3AusersInfo`);
+    return this.http.get<Friend[]>(`/api/data/friends?where=_ownerId%3D%22${userId}%22&load=friendData%3DfriendId%3AusersInfo`);
   }
 
   removeFriend(friendshipId: string) {

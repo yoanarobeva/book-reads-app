@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ShelvesService } from 'src/app/books/services/shelves.service';
-import { Shelf, User } from 'src/app/shared/types';
+import { Friend, Shelf, User } from 'src/app/shared/types';
 import { FriendsService } from '../services/friends.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     currentShelf: Shelf[] = [];
     readShelf: Shelf[] = [];
     isLoading: boolean = true;
-    friends: User[] | undefined;
+    friends: Friend[] | undefined;
     subOne!: Subscription;
     subTwo!: Subscription;
 
@@ -25,14 +25,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
     constructor(private shelvesService: ShelvesService, private authService: AuthService, private friendsService: FriendsService) {};
 
     unfriend(friendId: string) {
-        this.friends = this.friends?.filter((x:User) => x._id !== friendId);
+        this.friends = this.friends?.filter((x:Friend) => x._id !== friendId);
     }
 
     ngOnInit(): void {
         this.user = this.authService.user!;
         
         this.subOne = this.shelvesService.getOwnShelves(this.user._id).subscribe({
-            next: (data: any) => {
+            next: (data: Shelf[]) => {
                 this.userShelves = data;
                 if(this.userShelves) {
                     this.wantShelf = this.userShelves.filter((x:Shelf) => x.shelf === 'want');
@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         });
 
         this.subTwo = this.friendsService.getFriends(this.user._id).subscribe({
-            next: (friends: any) => {
+            next: (friends: Friend[]) => {
                 this.friends = friends;
                 this.friends = this.friends?.map((x: any) => ({...x.friendData, "friendshipId" : x._id}))
             },

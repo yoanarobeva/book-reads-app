@@ -17,7 +17,7 @@ export class BooksListCardComponent implements OnInit{
   ngOnInit(): void {
     
     this.booksService.getBooksFromList(this.list._id).subscribe({
-      next: (books: any) => {
+      next: (books: Book[]) => {
         this.books = books;
         this.isLoading = false;
       }, 

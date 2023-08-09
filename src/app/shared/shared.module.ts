@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { LoadingComponent } from './loading/loading.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { FriendCardComponent } from './friend-card/friend-card.component';
-import { ElapsedTimePipe } from './pipes/elapsed-time.pipe';
 
 
 @NgModule({
@@ -15,13 +14,12 @@ import { ElapsedTimePipe } from './pipes/elapsed-time.pipe';
     LoadingComponent,
     BooksListComponent,
     FriendCardComponent,
-    ElapsedTimePipe,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
   ],
-  exports: [BookSearchComponent, LoadingComponent, BooksListComponent, FriendCardComponent, ElapsedTimePipe ]
+  exports: [BookSearchComponent, LoadingComponent, BooksListComponent, FriendCardComponent ]
 })
 export class SharedModule { }

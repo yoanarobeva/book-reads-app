@@ -43,7 +43,7 @@ export class UserHomeComponent implements OnInit, OnDestroy{
         const userId = this.authService.user!._id;
         
         this.subOne = this.shelvesService.getOwnShelves(userId).subscribe({
-            next: (data: any) => {
+            next: (data: Shelf[]) => {
                 this.userShelves = data;
                 this.wantShelf = this.userShelves?.filter((x: Shelf) => x.shelf === 'want');
                 this.currentShelf = this.userShelves?.find((x: Shelf) => x.shelf === 'currently');
@@ -61,7 +61,7 @@ export class UserHomeComponent implements OnInit, OnDestroy{
             error: err => console.error(err.message),
             complete: () => {
                 this.friendsService.getFriends(userId).subscribe({
-                    next: (data: any) => {
+                    next: (data: Friend[]) => {
                         if(data) {
                             this.friends = data;
                             this.friends = this.friends?.map((x: any) => ({...x.friendData}));
@@ -69,7 +69,7 @@ export class UserHomeComponent implements OnInit, OnDestroy{
                             this.friends.forEach((friend: any) => {
                                 
                                 this.activitiesService.getUserActivities(friend._ownerId).subscribe({
-                                    next: (activities: any) => {
+                                    next: (activities: Activity[]) => {
                                         const currentActivities = activities.map((x: Activity) => ({...x, "friendImage": friend.img, "friendName": friend.name}))
                                         this.activities = [...this.activities, ...currentActivities, ]
                                         this.activities.sort((a:any, b:any) => a._createdOn - b._createdOn);

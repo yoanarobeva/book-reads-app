@@ -41,7 +41,7 @@ export class UpdateBookComponent implements OnInit, OnDestroy{
       this.isLoading = true;
 
       this.booksService.getABook(this.bookId).subscribe({
-        next: (book: any) => {
+        next: (book: Book) => {
           this.book = book;
           this.isLoading = false;
         },
@@ -49,7 +49,7 @@ export class UpdateBookComponent implements OnInit, OnDestroy{
       })
 
       this.booksService.getAllLists().subscribe({
-        next: (lists: any) => {
+        next: (lists: List[]) => {
           this.lists = lists;
           this.isLoading = false;        
         },

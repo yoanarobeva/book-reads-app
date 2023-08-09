@@ -20,7 +20,7 @@ export class BookSearchComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     
     this.sub = this.booksService.getAllLists().subscribe({
-      next: (lists: any) => {
+      next: (lists: List[]) => {
         this.lists = lists;
         this.isLoading = false;        
       },

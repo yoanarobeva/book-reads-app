@@ -15,7 +15,7 @@ export class AllBooksComponent implements OnInit{
 
   ngOnInit(): void {
     this.booksService.getAllLists().subscribe({
-      next: (lists: any) => {
+      next: (lists: List[]) => {
         this.lists = lists;
         this.isLoading = false;        
       },

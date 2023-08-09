@@ -19,7 +19,7 @@ export class WantToReadCardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub = this.booksService.getABook(this.bookId).subscribe({
-      next: (book: any) => {
+      next: (book: Book) => {
         this.book = book;
         this.isLoading = false;        
       },

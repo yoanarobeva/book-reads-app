@@ -50,14 +50,14 @@ export class BooksListComponent implements OnInit, OnDestroy {
         this.isLoading = true;
   
         this.booksService.getAList(this.listId).subscribe({
-          next: (list: any) => {
+          next: (list: List) => {
             this.list = list;
           },
           error: err => console.error(err.message)
         })
   
         this.booksService.getBooksFromList(this.listId).subscribe({
-          next: (books: any) => {
+          next: (books: Book[]) => {
             this.books = books;
             this.isLoading = false;
           },
@@ -66,7 +66,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
       });
     } else {
       if(this.booksOnShelf) {
-        this.books = this.booksOnShelf.map((x: any) => ({...x.bookData, "shelf": x.shelf})) as Book[];
+        this.books = this.booksOnShelf.map((x: Shelf) => ({...x.bookData, "shelf": x.shelf})) as Book[];
         
         this.isLoading = false;
       }

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from '../types';
+import { Friend, User } from '../types';
 import { FriendsService } from 'src/app/user/services/friends.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-friend-card',
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
 export class FriendCardComponent {
 
   @Input() isFriend!: boolean;
-  @Input() user!: User;
+  @Input() user!: Friend | User;
 
   @Output() newfriendEvent = new EventEmitter<string>();
 

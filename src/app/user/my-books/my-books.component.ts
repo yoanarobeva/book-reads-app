@@ -57,7 +57,7 @@ export class MyBooksComponent implements OnInit, OnDestroy {
             this.isLoading = true;
 
             this.shelvesService.getOwnShelves(this.user._id).subscribe({
-                next: (data: any) => {
+                next: (data: Shelf[]) => {
                     this.userShelves = data;
                     if(this.userShelves) {
                         this.wantShelf = this.userShelves.filter((x:Shelf) => x.shelf === 'want');

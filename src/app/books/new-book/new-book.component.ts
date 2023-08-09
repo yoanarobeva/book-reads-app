@@ -22,7 +22,7 @@ export class NewBookComponent implements OnInit{
     const {title, author, _listId, book_image, description} = form.value
 
     this.booksService.addABook({title, author, _listId, book_image, description}).subscribe({
-      next: (book: any) => {
+      next: (book: Book) => {
         const currentBook: Book = book;
         this.router.navigate([`/books/${currentBook._listId}/${currentBook._id}`]);
       },
@@ -33,7 +33,7 @@ export class NewBookComponent implements OnInit{
 
   ngOnInit(): void {
     this.booksService.getAllLists().subscribe({
-      next: (lists: any) => {
+      next: (lists: List[]) => {
         this.lists = lists;
         this.isLoading = false;        
       },

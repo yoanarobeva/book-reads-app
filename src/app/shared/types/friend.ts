@@ -6,4 +6,11 @@ export interface Friend {
     "friendId": string,
     "_createdOn": string,
     "friendData"?: User,
+    "friendshipId"?: string,
+    "email"?: string,
+    "hashedPassword"?: string,
+    "name"?: string,
+    "age"?: string,
+    "city"?: string,
+    "img"?: string,
 }

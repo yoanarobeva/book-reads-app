@@ -3,7 +3,7 @@ import { BooksService } from '../services/books.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ShelvesService } from '../services/shelves.service';
 import { AuthService } from 'src/app/auth/auth.service';
-import { Book, Shelf } from 'src/app/shared/types';
+import { Book, List, Shelf } from 'src/app/shared/types';
 import { Subscription } from 'rxjs';
 import { ActivitiesService } from '../services/activities.service';
 
@@ -77,7 +77,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     }
 
     this.shelvesService.addBook(shelfName, this.listId, this.bookId).subscribe({
-      next: (data: any) => {
+      next: (data: Shelf) => {
         this.selectedShelf = data;
         // console.log("before adding activity", this.selectedShelf); 
         this.activitiesService.registerActivity(shelfName, this.listId, this.bookId).subscribe({
@@ -98,7 +98,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       this.bookId = params['bookId'];
 
       this.booksService.getABook(this.bookId).subscribe({
-        next: (book: any) => {
+        next: (book: Book) => {
           this.book = book;
           this.isLoading = false;
         },
@@ -110,8 +110,8 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
    if(userId) {
      this.subTwo = this.shelvesService.getOwnShelves(userId).subscribe({
-      next: (list: any) => {
-        this.booksOnShelves = list;
+      next: (shelvesData: Shelf[]) => {
+        this.booksOnShelves = shelvesData;
         if (this.booksOnShelves?.find((x: Shelf) => x.bookId === this.bookId)) {
           this.selectedShelf = this.booksOnShelves.find((x: Shelf) => x.bookId === this.bookId);
           this.selectedShelfName = this.selectedShelf?.shelf;
