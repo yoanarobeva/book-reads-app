@@ -21,8 +21,6 @@ export class RegisterComponent {
 
     this.isLoading = true;
 
-    //TODO: make matching passwords validation!!!!
-
     const {name, email, age, city, img, password, rePassword} = form.value;
 
     if (password === rePassword) {
