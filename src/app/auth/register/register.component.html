@@ -52,10 +52,10 @@
 
             <mat-form-field class="app-full-width">
                 <mat-label>Repeat Password</mat-label>
-                <input matInput placeholder="Repeat Password" type="password" name="rePassword" ngModel #inputRePassword="ngModel" required> 
+                <input matInput placeholder="Repeat Password" type="password" name="rePassword" ngModel #inputRePassword="ngModel" required [appMatchPassword]="inputPassword.value"> 
                 <ng-container *ngIf="inputRePassword.touched">
                     <mat-hint *ngIf="inputPassword.errors?.['required']" class="error">Repeat password is required!</mat-hint>
-                    <mat-hint *ngIf="inputRePassword.errors?.['matchPasswordValidator']" class="error">Repeat Password does not match password!</mat-hint>
+                    <mat-hint *ngIf="inputRePassword.errors?.['matchPasswordValidator']" class="error">Passwords mismatch!</mat-hint>
                 </ng-container>
             </mat-form-field>
             
