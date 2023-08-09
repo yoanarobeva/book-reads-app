@@ -8,10 +8,10 @@
             
             <mat-form-field class="app-full-width">
                 <mat-label>Email</mat-label>
-                <input type="email" matInput placeholder="Email" name="email" ngModel #inputEmail="ngModel" required email>
+                <input type="email" matInput placeholder="Email" name="email" ngModel #inputEmail="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                 <ng-container *ngIf="inputEmail.touched">
                     <mat-hint *ngIf="inputEmail.errors?.['required']" class="error">Email is required!</mat-hint>
-                    <mat-hint *ngIf="inputEmail.errors?.['email']" class="error">Email is incorrect!</mat-hint>
+                    <mat-hint *ngIf="inputEmail.errors?.['pattern']" class="error">Email is incorrect!</mat-hint>
                 </ng-container>
             </mat-form-field>
 

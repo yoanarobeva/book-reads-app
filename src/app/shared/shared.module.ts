@@ -8,7 +8,6 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { FriendCardComponent } from './friend-card/friend-card.component';
 import { MatchPasswordDirective } from './validators/match-password.directive';
 
-
 @NgModule({
   declarations: [
     BookSearchComponent,
