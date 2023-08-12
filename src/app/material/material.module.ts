@@ -25,6 +25,7 @@ const MaterialComponents = [
   MatTableModule,
   MatSelectModule,
   MatButtonToggleModule,
+  
 ]
 
 @NgModule({

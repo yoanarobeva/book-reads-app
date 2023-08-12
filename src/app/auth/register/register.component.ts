@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { USER_KEY } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +26,6 @@ export class RegisterComponent {
       this.authService.register(name, email, age, city, img, password).subscribe({
         next: user => {
           this.isLoading = false;
-          // sessionStorage.setItem(USER_KEY, JSON.stringify({...user, name, age, city, img}));
           this.router.navigate(['/home']);
         },
         error: err => console.error(err.message),

@@ -20,3 +20,21 @@
 .search-field mat-label {
     font-size: 0.8em;
 }
+
+@media (max-width: 600px) {
+    .nav-toolbar {
+        padding-block: 0em;
+    }
+
+    .site-brand {
+        margin-right: 0.4em;
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .example-spacer {
+        display: none;
+    }
+
+    
+}

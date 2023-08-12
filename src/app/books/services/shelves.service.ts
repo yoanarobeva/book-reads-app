@@ -13,11 +13,6 @@ export class ShelvesService {
     return this.http.get<Shelf[]>(`/api/data/shelves?where=_ownerId%3D%22${userId}%22&load=bookData%3DbookId%3Abooks`);
   }
 
-  // getOwnShelf(userId: string, shelfName: string) {
-  //   const match = encodeURIComponent(`shelf="${shelfName}",_ownerId="${userId}"`);
-  //   return this.http.get(`/api/data/shelves?where=${match}`);
-  // }
-
   getShelf(shelfName: string) {
     return this.http.get<Shelf>(`/api/data/shelves?where=shelf%3D%22${shelfName}%22`);
   }

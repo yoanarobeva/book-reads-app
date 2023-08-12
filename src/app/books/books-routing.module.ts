@@ -25,7 +25,6 @@ const routes: Routes = [
   },
   {
     path: ':listId',
-    // pathMatch: 'full',
     component: AllBooksListComponent,
   },
   {

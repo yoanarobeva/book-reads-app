@@ -79,7 +79,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     this.shelvesService.addBook(shelfName, this.listId, this.bookId).subscribe({
       next: (data: Shelf) => {
         this.selectedShelf = data;
-        // console.log("before adding activity", this.selectedShelf); 
         this.activitiesService.registerActivity(shelfName, this.listId, this.bookId).subscribe({
           next: (data) => {
             // console.log("added activity", data);

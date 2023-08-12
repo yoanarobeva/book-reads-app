@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth/auth.service';
-// import { ErrorService } from './core/error/error.service';
 
 const { apiUrl } = environment;
 
@@ -19,7 +18,6 @@ const { apiUrl } = environment;
 
 export class AppInterceptor implements HttpInterceptor {
 
-  // constructor(private router: Router, private errorService: ErrorService) {};
   constructor(private router: Router, private authService: AuthService) {};
 
   intercept(
@@ -30,7 +28,6 @@ export class AppInterceptor implements HttpInterceptor {
     if (req.url.startsWith('/api')) {
       req = req.clone({
         url: req.url.replace('/api', apiUrl),
-        // withCredentials: true,
       });
     }
 
@@ -57,13 +54,8 @@ export class AppInterceptor implements HttpInterceptor {
         if(err.status ===  401) {
           this.router.navigate(['/auth/login']);
         } else {
-          console.error(err.message); //delete if you uncomment next
-          
-          // this.router.navigate(['/error']);
-          // this.errorService.setError(err);
+          console.error(err.message);
         }
-
-
         return [err];
       })
     );
